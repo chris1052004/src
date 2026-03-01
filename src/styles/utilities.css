@@ -1,0 +1,306 @@
+/* Custom utilities and animations */
+
+@layer utilities {
+  /* Typography */
+  .font-poppins {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* ── Industrial amber design system ──────────────────────────── */
+
+  /* Bebas Neue — hero numbers, stats, big metrics */
+  .font-bebas {
+    font-family: 'Bebas Neue', 'Impact', 'Arial Narrow', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* DM Sans — body text on redesigned screens */
+  .font-dm {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+  
+  .glow-danger {
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+  }
+  
+  /* Interactive card depth */
+  .card-interactive {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-interactive:active {
+    transform: scale(0.97);
+  }
+  
+  .card-interactive:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+  
+  .dark .card-interactive:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-hero-dark {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 40%, #2563EB 100%);
+  }
+  
+  .gradient-hero-light {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%);
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Animations */
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash-move {
+    to {
+      stroke-dashoffset: -20;
+    }
+  }
+
+  @keyframes bounce-soft {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s ease-out both;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out both;
+  }
+
+  .animate-dash {
+    animation: dash-move 1s linear infinite;
+  }
+
+  /* Stagger delays */
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+  .stagger-6 { animation-delay: 0.3s; }
+  
+  /* Progress bar */
+  .progress-bar {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Scrollbar hide */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .ios-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Amber pulse — legacy / semantic status ─────────────────── */
+  @keyframes amber-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.55); }
+    60%       { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);  }
+  }
+  .pulse-amber {
+    animation: amber-pulse 2.2s ease-in-out infinite;
+  }
+
+  /* ── Blue pulse — "In Progress" primary status indicator ────── */
+  @keyframes blue-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.60); }
+    60%       { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);  }
+  }
+  .pulse-blue {
+    animation: blue-pulse 2.2s ease-in-out infinite;
+  }
+
+  /* ── Shimmer slide — CTA button shine ──────────────────────── */
+  @keyframes shimmer-slide {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+  .shimmer-slide {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.22) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-slide 2.4s ease-in-out infinite;
+  }
+
+  /* ── Card depth — elevated panel style ─────────────────────── */
+  .card-depth {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.40),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* ── Amber focus ring for light-mode form inputs ────────────── */
+  .focus-amber:focus {
+    outline: none;
+    border-color: #F59E0B;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+  }
+
+  /**
+   * status-bar-aware — used on sticky app headers.
+   * On desktop (≥520px), adds top padding to clear the simulated status bar.
+   * On mobile, uses normal py-3 top padding (12px).
+   */
+  .status-bar-aware {
+    padding-top: 12px; /* mobile: py-3 */
+    padding-bottom: 12px;
+  }
+}
+
+/* Desktop: push sticky header content below the 50px status bar */
+@media (min-width: 520px) {
+  .status-bar-aware {
+    padding-top: 50px !important;
+  }
+}

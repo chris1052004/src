@@ -1,0 +1,246 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* G Tech Auditor Design Tokens - Light Mode */
+  /* Neutral Scale */
+  --neutral-0: #FFFFFF;
+  --neutral-50: #F9FAFB;
+  --neutral-100: #F3F4F6;
+  --neutral-200: #E5E7EB;
+  --neutral-300: #D1D5DB;
+  --neutral-400: #9CA3AF;
+  --neutral-500: #6B7280;
+  --neutral-600: #4B5563;
+  --neutral-700: #374151;
+  --neutral-800: #1F2937;
+  --neutral-900: #111827;
+  
+  /* Brand Colors - Automotive Blue */
+  --primary-blue: #2563EB;
+  --primary-blue-dark: #1E40AF;
+  --primary-blue-light: #3B82F6;
+  --primary-blue-glow: rgba(37, 99, 235, 0.3);
+  
+  /* Semantic Colors */
+  --danger-red: #DC2626;
+  --danger-red-light: #EF4444;
+  --danger-red-glow: rgba(220, 38, 38, 0.2);
+  --warning-amber: #F59E0B;
+  --warning-amber-light: #FBBF24;
+  --success-green: #10B981;
+  --success-green-light: #34D399;
+  --info-blue: #3B82F6;
+  
+  /* Light Mode Surface Colors */
+  --background: var(--neutral-0);
+  --foreground: var(--neutral-900);
+  --card: var(--neutral-0);
+  --card-foreground: var(--neutral-900);
+  --surface: var(--neutral-50);
+  --surface-elevated: var(--neutral-0);
+  
+  /* Component Colors */
+  --primary: var(--primary-blue);
+  --primary-foreground: var(--neutral-0);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+  --destructive: var(--danger-red);
+  --destructive-foreground: var(--neutral-0);
+  
+  /* Borders & Dividers */
+  --border: var(--neutral-200);
+  --divider: var(--neutral-200);
+  --input: var(--neutral-200);
+  --input-background: var(--neutral-0);
+  --ring: var(--primary-blue);
+  
+  /* Misc */
+  --radius: 0.75rem;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+}
+
+.dark {
+  /* G Tech Auditor — Blue/Red Dark Theme */
+  /* Dark Mode Surface Colors */
+  --background: #0D0F1C;
+  --foreground: var(--neutral-50);
+  --card: #151728;
+  --card-foreground: var(--neutral-50);
+  --surface: #151728;
+  --surface-elevated: #1C1F38;
+
+  /* Component Colors — primary blue stays blue in dark mode */
+  --primary: var(--primary-blue);
+  --primary-foreground: var(--neutral-0);
+  --secondary: var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--neutral-800);
+  --accent-foreground: var(--neutral-50);
+  --destructive: var(--danger-red-light);
+  --destructive-foreground: var(--neutral-0);
+  
+  /* Borders & Dividers - Dark Mode */
+  --border: var(--neutral-800);
+  --divider: var(--neutral-800);
+  --input: var(--neutral-700);
+  --input-background: var(--neutral-900);
+  --ring: var(--primary-blue-light);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-divider: var(--divider);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-blue-dark: var(--primary-blue-dark);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-danger-red: var(--danger-red);
+  --color-danger-red-light: var(--danger-red-light);
+  --color-warning-amber: var(--warning-amber);
+  --color-warning-amber-light: var(--warning-amber-light);
+  --color-success-green: var(--success-green);
+  --color-success-green-light: var(--success-green-light);
+  --color-info-blue: var(--info-blue);
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* html is the desktop background canvas */
+  html {
+    font-size: var(--font-size);
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    height: 100%;
+    background: #000;
+  }
+
+  /* On desktop: show rich background behind the phone frame */
+  @media (min-width: 520px) {
+    html {
+      background: radial-gradient(ellipse at 50% 0%, #1a2744 0%, #0d1527 50%, #000000 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 0 32px;
+      min-height: 100vh;
+    }
+  }
+
+  /* body is the scroll container — no visual frame (MobileShell handles it) */
+  body {
+    @apply bg-background text-foreground;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* On actual mobile: full-screen natural behavior */
+  @media (max-width: 519px) {
+    html {
+      background: var(--background);
+    }
+    body {
+      width: 100%;
+    }
+  }
+
+  /* Safe area for iOS devices */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
