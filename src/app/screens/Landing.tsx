@@ -83,7 +83,7 @@ export default function Landing() {
   }, [navigate]);
 
   return (
-    <div className="h-full flex flex-col bg-white overflow-hidden">
+    <div className="h-full flex flex-col bg-card overflow-hidden">
 
       {/* ── Hero area ──────────────────────────────────────────── */}
       <div className="relative flex items-center justify-center overflow-hidden flex-shrink-0"
@@ -125,12 +125,12 @@ export default function Landing() {
                 <path d="M9 12l2 2 4-4" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <span className="text-[11px] font-bold tracking-[0.12em] text-neutral-400 uppercase">G Tech Solutions</span>
+            <span className="text-[11px] font-bold tracking-[0.12em] text-muted-foreground uppercase">G Tech Solutions</span>
           </div>
-          <h1 className="text-[30px] font-bold text-neutral-900 tracking-tight leading-tight">
+          <h1 className="text-[30px] font-bold text-foreground tracking-tight leading-tight">
             G Tech Auditor
           </h1>
-          <p className="mt-1.5 text-[14px] text-neutral-500 leading-relaxed">
+          <p className="mt-1.5 text-[14px] text-muted-foreground leading-relaxed">
             Platform inspeksi & audit kendaraan digital untuk dealer Toyota Indonesia.
           </p>
         </motion.div>
@@ -160,7 +160,7 @@ export default function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-4 text-center text-[11px] text-neutral-400 leading-relaxed"
+          className="mt-4 text-center text-[11px] text-muted-foreground leading-relaxed"
         >
           Dengan mendaftar, Anda menyetujui{' '}
           <span className="text-primary-blue">Syarat &amp; Ketentuan</span> kami.

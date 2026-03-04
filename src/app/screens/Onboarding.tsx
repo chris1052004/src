@@ -214,7 +214,7 @@ export default function Onboarding() {
   const slide = SLIDES[current];
 
   return (
-    <div className="h-full flex flex-col bg-white overflow-hidden">
+    <div className="h-full flex flex-col bg-card overflow-hidden">
 
       {/* Slides — horizontal scroll */}
       <div
@@ -243,10 +243,10 @@ export default function Onboarding() {
                 <span className={`self-start text-[10px] font-bold tracking-[0.15em] px-2.5 py-1 rounded-full ${s.tagColor} mb-3`}>
                   {s.tag}
                 </span>
-                <h2 className="text-[24px] font-bold text-neutral-900 leading-snug whitespace-pre-line">
+                <h2 className="text-[24px] font-bold text-foreground leading-snug whitespace-pre-line">
                   {s.title}
                 </h2>
-                <p className="mt-3 text-[14px] text-neutral-500 leading-relaxed">
+                <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
                   {s.desc}
                 </p>
               </div>
@@ -290,7 +290,7 @@ export default function Onboarding() {
         {current < maxIndex && (
           <button
             onClick={finish}
-            className="w-full mt-3 h-10 text-[13px] text-neutral-400 font-medium"
+            className="w-full mt-3 h-10 text-[13px] text-muted-foreground font-medium"
           >
             Lewati
           </button>

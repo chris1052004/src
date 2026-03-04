@@ -70,7 +70,7 @@ export default function CreateIssue() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate(-1)}
-            className="w-9 h-9 -ml-1 flex items-center justify-center rounded-xl hover:bg-neutral-100 transition-colors"
+            className="w-9 h-9 -ml-1 flex items-center justify-center rounded-xl hover:bg-surface transition-colors"
             aria-label="Kembali"
           >
             <ArrowLeft className="w-5 h-5 text-foreground" strokeWidth={2} />
@@ -82,8 +82,8 @@ export default function CreateIssue() {
         </div>
       </div>
 
-      <div className="px-4 pt-5 space-y-4" style={{ paddingBottom: 'calc(150px + env(safe-area-inset-bottom))' }}>
-        <div className="rounded-2xl border border-divider/60 bg-white p-4 space-y-3">
+      <div className="px-4 pt-5 space-y-4" style={{ paddingBottom: 'calc(152px + env(safe-area-inset-bottom))' }}>
+        <div className="rounded-2xl border border-divider/60 bg-card p-4 space-y-3">
           <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-widest">Informasi</p>
           <div>
             <label className="block text-[11px] font-medium text-muted-foreground uppercase tracking-widest mb-2">
@@ -109,7 +109,7 @@ export default function CreateIssue() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-divider/60 bg-white p-4">
+        <div className="rounded-2xl border border-divider/60 bg-card p-4">
           <label className="block text-[11px] font-medium text-muted-foreground uppercase tracking-widest mb-2">
             Tingkat Keparahan <span className="text-danger-red normal-case tracking-normal">*</span>
           </label>
@@ -124,7 +124,7 @@ export default function CreateIssue() {
                   className={`h-[76px] rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
                     active
                       ? `${option.bg} ${option.border} shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]`
-                      : 'bg-neutral-100 border-transparent'
+                      : 'bg-secondary border-transparent'
                   }`}
                 >
                   <span className={`text-[12px] font-medium ${active ? option.color : 'text-muted-foreground'}`}>
@@ -139,7 +139,7 @@ export default function CreateIssue() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-divider/60 bg-white p-4 space-y-3">
+        <div className="rounded-2xl border border-divider/60 bg-card p-4 space-y-3">
           <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-widest">Bukti</p>
           <div className="rounded-xl border border-divider/60 bg-card px-3 py-3 flex items-center gap-3">
             <div className="flex-1 min-w-0">
@@ -205,7 +205,7 @@ export default function CreateIssue() {
             className={`flex-1 h-12 rounded-2xl text-[15px] font-semibold transition-all ${
               canSubmit
                 ? 'bg-primary-blue text-white shadow-sm shadow-primary-blue/30'
-                : 'bg-neutral-200 text-muted-foreground cursor-not-allowed opacity-70'
+                : 'bg-secondary text-muted-foreground cursor-not-allowed opacity-70'
             }`}
           >
             Simpan Temuan

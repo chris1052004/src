@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
   Check,
@@ -91,7 +91,7 @@ function MiniSheet({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 32, stiffness: 340 }}
-            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[24px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[24px] bg-card"
             style={{
               maxHeight: height,
               display: 'flex',
@@ -100,15 +100,15 @@ function MiniSheet({
             }}
           >
             <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-              <div className="w-9 h-1 rounded-full bg-neutral-200" />
+              <div className="w-9 h-1 rounded-full bg-divider" />
             </div>
-            <div className="px-5 py-3 flex items-center justify-between border-b border-neutral-100 flex-shrink-0">
-              <h2 className="text-[16px] font-semibold text-neutral-900">{title}</h2>
+            <div className="px-5 py-3 flex items-center justify-between border-b border-divider/50 flex-shrink-0">
+              <h2 className="text-[16px] font-semibold text-foreground">{title}</h2>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center"
+                className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center"
               >
-                <X className="w-4 h-4 text-neutral-500" strokeWidth={2} />
+                <X className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
               </button>
             </div>
             <div
@@ -167,7 +167,7 @@ function SelectTemplateSheet({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 320 }}
-            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
             style={{
               maxHeight: '88vh',
               display: 'flex',
@@ -176,16 +176,16 @@ function SelectTemplateSheet({
             }}
           >
             <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-              <div className="w-9 h-1 rounded-full bg-neutral-200" />
+              <div className="w-9 h-1 rounded-full bg-divider" />
             </div>
             <div className="px-5 py-3 flex items-center justify-between flex-shrink-0">
-              <h2 className="text-[17px] font-semibold text-neutral-900">Select a template</h2>
+              <h2 className="text-[17px] font-semibold text-foreground">Select a template</h2>
               <button
                 onClick={onClose}
-                className="w-9 h-9 rounded-full bg-neutral-100 flex items-center justify-center"
+                className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center"
                 aria-label="Close"
               >
-                <X className="w-4 h-4 text-neutral-500" strokeWidth={2} />
+                <X className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
               </button>
             </div>
 
@@ -195,40 +195,40 @@ function SelectTemplateSheet({
                   key={t.id}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => { onSelect(t.id); onClose(); }}
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-left hover:bg-neutral-50 transition-colors"
+                  className="w-full flex items-center gap-3 px-5 py-3.5 text-left hover:bg-surface transition-colors"
                   style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
                 >
                   <div className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(37,99,235,0.08)' }}>
                     <ClipboardList className="w-5 h-5" style={{ color: '#2563EB' }} strokeWidth={1.8} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[14px] font-semibold text-neutral-900 truncate">{t.title}</p>
-                    <p className="text-[12px] text-neutral-500 truncate mt-0.5">{t.description}</p>
-                    <p className="text-[11px] text-neutral-400 mt-0.5">Author Alex R.</p>
+                    <p className="text-[14px] font-semibold text-foreground truncate">{t.title}</p>
+                    <p className="text-[12px] text-muted-foreground truncate mt-0.5">{t.description}</p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5">Author Alex R.</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-neutral-300 flex-shrink-0" strokeWidth={2} />
+                  <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={2} />
                 </motion.button>
               ))}
               {filtered.length === 0 && (
                 <div className="py-14 text-center">
-                  <p className="text-[14px] text-neutral-400">No templates found for "{search}"</p>
+                  <p className="text-[14px] text-muted-foreground">No templates found for "{search}"</p>
                 </div>
               )}
             </div>
 
-            <div className="px-4 pt-3 flex-shrink-0 bg-white" style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}>
-              <div className="flex items-center gap-2.5 h-11 px-3.5 rounded-xl" style={{ background: 'rgba(0,0,0,0.06)' }}>
-                <Search className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
+            <div className="px-4 pt-3 flex-shrink-0 bg-card" style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingBottom: 'max(env(safe-area-inset-bottom), 16px)' }}>
+              <div className="flex items-center gap-2.5 h-11 px-3.5 rounded-xl bg-secondary">
+                <Search className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
                 <input
                   type="text"
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   placeholder="Search templates"
-                  className="flex-1 bg-transparent text-[14px] text-neutral-900 placeholder:text-neutral-400 outline-none"
+                  className="flex-1 bg-transparent text-[14px] text-foreground placeholder:text-muted-foreground outline-none"
                 />
                 {search && (
                   <button onClick={() => setSearch('')}>
-                    <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                   </button>
                 )}
               </div>
@@ -303,22 +303,22 @@ function WorkflowSettingsSheet({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 320 }}
-            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
             style={{ maxHeight: '80vh', display: 'flex', flexDirection: 'column', boxShadow: '0 -8px 48px rgba(0,0,0,0.16)' }}
           >
-            <div className="flex justify-center pt-3 pb-1 flex-shrink-0"><div className="w-9 h-1 rounded-full bg-neutral-200" /></div>
-            <div className="px-5 py-3 flex items-center justify-between border-b border-neutral-100 flex-shrink-0">
-              <h2 className="text-[17px] font-semibold text-neutral-900">Manage Workflow</h2>
-              <button onClick={onClose} className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center"><X className="w-4 h-4 text-neutral-500" strokeWidth={2} /></button>
+            <div className="flex justify-center pt-3 pb-1 flex-shrink-0"><div className="w-9 h-1 rounded-full bg-divider" /></div>
+            <div className="px-5 py-3 flex items-center justify-between border-b border-divider/50 flex-shrink-0">
+              <h2 className="text-[17px] font-semibold text-foreground">Manage Workflow</h2>
+              <button onClick={onClose} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center"><X className="w-4 h-4 text-muted-foreground" strokeWidth={2} /></button>
             </div>
             <div className="flex-1 overflow-y-auto scrollbar-hide px-5 py-4 space-y-2" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 24px)' }}>
               {local.map((s, idx) => (
-                <div key={s.id} className="flex items-center gap-2 h-12 rounded-xl px-3 bg-white" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
+                <div key={s.id} className="flex items-center gap-2 h-12 rounded-xl px-3 bg-card border border-divider/60">
                   <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: s.color }} />
                   {editingId === s.id ? (
-                    <input autoFocus value={editingLabel} onChange={e => setEditingLabel(e.target.value)} onBlur={handleRenameSave} onKeyDown={e => { if (e.key === 'Enter') handleRenameSave(); }} className="flex-1 text-[14px] font-medium text-neutral-900 outline-none bg-transparent" />
+                    <input autoFocus value={editingLabel} onChange={e => setEditingLabel(e.target.value)} onBlur={handleRenameSave} onKeyDown={e => { if (e.key === 'Enter') handleRenameSave(); }} className="flex-1 text-[14px] font-medium text-foreground outline-none bg-transparent" />
                   ) : (
-                    <span className="flex-1 text-[14px] font-medium text-neutral-800 cursor-text" onClick={() => { setEditingId(s.id); setEditingLabel(s.label); }}>{s.label}</span>
+                    <span className="flex-1 text-[14px] font-medium text-foreground cursor-text" onClick={() => { setEditingId(s.id); setEditingLabel(s.label); }}>{s.label}</span>
                   )}
                   <button onClick={() => handleMoveUp(idx)} disabled={idx === 0} className="w-7 h-7 rounded-lg flex items-center justify-center disabled:opacity-30" style={{ color: '#94A3B8' }}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9V3M3 6l3-3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -331,7 +331,7 @@ function WorkflowSettingsSheet({
               ))}
               <div className="flex items-center gap-2 h-12 rounded-xl px-3" style={{ border: '1.5px dashed rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}>
                 <Plus className="w-4 h-4 flex-shrink-0" style={{ color: '#2563EB' }} strokeWidth={2.5} />
-                <input value={newLabel} onChange={e => setNewLabel(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleAdd(); }} placeholder="Add status…" className="flex-1 text-[14px] text-neutral-700 placeholder:text-neutral-400 outline-none bg-transparent" />
+                <input value={newLabel} onChange={e => setNewLabel(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleAdd(); }} placeholder="Add status…" className="flex-1 text-[14px] text-foreground placeholder:text-muted-foreground outline-none bg-transparent" />
                 {newLabel.trim() && <button onClick={handleAdd} className="text-[13px] font-semibold" style={{ color: '#2563EB' }}>Add</button>}
               </div>
             </div>
@@ -447,7 +447,7 @@ function ActionDetailSheet({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed inset-x-0 bottom-0 z-[65] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+              className="fixed inset-x-0 bottom-0 z-[65] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
               style={{
                 maxHeight: 'calc(100% - 50px)',
                 display: 'flex',
@@ -457,24 +457,24 @@ function ActionDetailSheet({
             >
               {/* Handle */}
               <div className="flex justify-center pt-3 pb-0 flex-shrink-0">
-                <div className="w-9 h-1 rounded-full bg-neutral-200" />
+                <div className="w-9 h-1 rounded-full bg-divider" />
               </div>
 
               {/* Header: X | Tabs | ... */}
               <div className="px-4 py-2.5 flex items-center gap-3 flex-shrink-0">
-                <button onClick={onClose} className="w-9 h-9 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0" aria-label="Close">
-                  <X className="w-4 h-4 text-neutral-500" strokeWidth={2} />
+                <button onClick={onClose} className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center flex-shrink-0" aria-label="Close">
+                  <X className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
                 </button>
 
-                <div className="flex-1 flex rounded-xl p-[3px] gap-[3px]" style={{ background: 'rgba(0,0,0,0.06)' }}>
+                <div className="flex-1 flex rounded-xl p-[3px] gap-[3px] bg-secondary">
                   {(['details', 'activity'] as const).map(tab => (
                     <button
                       key={tab}
                       onClick={() => setDetailTab(tab)}
                       className="flex-1 h-8 rounded-[9px] text-[13px] font-semibold transition-all capitalize"
                       style={{
-                        background: detailTab === tab ? 'white' : 'transparent',
-                        color: detailTab === tab ? '#111827' : '#6B7280',
+                        background: detailTab === tab ? 'var(--card)' : 'transparent',
+                        color: detailTab === tab ? 'var(--foreground)' : 'var(--muted-foreground)',
                         boxShadow: detailTab === tab ? '0 1px 3px rgba(0,0,0,0.10)' : 'none',
                       }}
                     >
@@ -483,8 +483,8 @@ function ActionDetailSheet({
                   ))}
                 </div>
 
-                <button className="w-9 h-9 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0" aria-label="More">
-                  <MoreHorizontal className="w-4 h-4 text-neutral-500" strokeWidth={2} />
+                <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center flex-shrink-0" aria-label="More">
+                  <MoreHorizontal className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
                 </button>
               </div>
 
@@ -500,10 +500,10 @@ function ActionDetailSheet({
                         <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-lg" style={{ background: 'rgba(37,99,235,0.10)', color: '#2563EB' }}>
                           ACTION
                         </span>
-                        <span className="text-[13px] font-semibold text-neutral-500">{action.code}</span>
+                        <span className="text-[13px] font-semibold text-muted-foreground">{action.code}</span>
                       </div>
-                      <h2 className="text-[17px] font-semibold text-neutral-900 leading-snug">{action.title}</h2>
-                      <p className="text-[12px] text-neutral-500 mt-1">{action.source}</p>
+                      <h2 className="text-[17px] font-semibold text-foreground leading-snug">{action.title}</h2>
+                      <p className="text-[12px] text-muted-foreground mt-1">{action.source}</p>
                     </div>
 
                     {/* Status dropdown button */}
@@ -522,17 +522,17 @@ function ActionDetailSheet({
 
                     {/* Content items — editable */}
                     {(action.contentItems.length > 0 || editingItems) && (
-                      <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
+                      <div className="rounded-xl overflow-hidden border border-divider/60 bg-surface">
                         {/* Header with Edit/Done button */}
                         <div className="flex items-center justify-between px-4 pt-3 pb-2">
-                          <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-neutral-400">Details</p>
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">Details</p>
                           {editingItems ? (
                             <button onClick={saveEditItems} className="flex items-center gap-1 text-[12px] font-semibold" style={{ color: '#2563EB' }}>
                               <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
                               Done
                             </button>
                           ) : (
-                            <button onClick={startEditItems} className="flex items-center gap-1 text-[12px] font-medium text-neutral-400">
+                            <button onClick={startEditItems} className="flex items-center gap-1 text-[12px] font-medium text-muted-foreground">
                               <Pencil className="w-3 h-3" strokeWidth={2} />
                               Edit
                             </button>
@@ -543,14 +543,13 @@ function ActionDetailSheet({
                           <div className="px-4 pb-3 space-y-2">
                             {draftItems.map((item, idx) => (
                               <div key={idx} className="flex items-center gap-2">
-                                <span className="text-[12px] text-neutral-400 font-medium w-5 flex-shrink-0">{idx + 1}.</span>
+                                <span className="text-[12px] text-muted-foreground font-medium w-5 flex-shrink-0">{idx + 1}.</span>
                                 <input
                                   autoFocus={idx === draftItems.length - 1 && !item}
                                   value={item}
                                   onChange={e => updateItem(idx, e.target.value)}
                                   placeholder="Type detail…"
-                                  className="flex-1 text-[13px] text-neutral-700 bg-white rounded-lg px-3 py-2 outline-none placeholder:text-neutral-300"
-                                  style={{ border: '1px solid rgba(0,0,0,0.10)' }}
+                                  className="flex-1 text-[13px] text-foreground bg-card rounded-lg px-3 py-2 outline-none placeholder:text-muted-foreground border border-divider/60"
                                 />
                                 <button onClick={() => deleteItem(idx)} className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ color: '#DC2626' }}>
                                   <X className="w-3.5 h-3.5" strokeWidth={2} />
@@ -565,8 +564,8 @@ function ActionDetailSheet({
                         ) : (
                           <ol className="px-4 pb-3 space-y-1.5">
                             {action.contentItems.map((item, idx) => (
-                              <li key={idx} className="flex gap-2 text-[13px] text-neutral-700 leading-relaxed">
-                                <span className="text-neutral-400 font-medium flex-shrink-0">{idx + 1}.</span>
+                              <li key={idx} className="flex gap-2 text-[13px] text-foreground leading-relaxed">
+                                <span className="text-muted-foreground font-medium flex-shrink-0">{idx + 1}.</span>
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -589,20 +588,19 @@ function ActionDetailSheet({
                     )}
 
                     {/* Divider */}
-                    <div className="h-px bg-neutral-100" />
+                    <div className="h-px bg-divider/50" />
 
                     {/* Metadata rows */}
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
+                    <div className="rounded-xl overflow-hidden border border-divider/60">
 
                       {/* Priority */}
                       <motion.button
                         whileTap={{ scale: 0.99 }}
                         onClick={() => setShowPrioritySheet(true)}
-                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
-                        style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left border-b border-divider/40"
                       >
-                        <Flag className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Priority</span>
+                        <Flag className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Priority</span>
                         <span className={clsx('text-[12px] font-semibold px-2.5 py-[3px] rounded-full border flex items-center gap-1', PRIORITY_STYLE[action.priority])}>
                           <ChevronDown className="w-3 h-3" strokeWidth={2.5} />
                           {action.priority}
@@ -613,43 +611,40 @@ function ActionDetailSheet({
                       <motion.button
                         whileTap={{ scale: 0.99 }}
                         onClick={() => { setTempDueDate(action.dueDate); setShowDueDateSheet(true); }}
-                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
-                        style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left border-b border-divider/40"
                       >
-                        <Calendar className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Due date</span>
-                        <span className="text-[13px] font-medium text-neutral-800">{action.dueDate}</span>
+                        <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Due date</span>
+                        <span className="text-[13px] font-medium text-foreground">{action.dueDate}</span>
                       </motion.button>
 
                       {/* Assignees */}
                       <motion.button
                         whileTap={{ scale: 0.99 }}
                         onClick={() => { setTempAssignee(action.assignee); setShowAssigneeSheet(true); }}
-                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
-                        style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left border-b border-divider/40"
                       >
-                        <User2 className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Assignees</span>
-                        <span className="text-[13px] font-medium text-neutral-800">{action.assignee}</span>
+                        <User2 className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Assignees</span>
+                        <span className="text-[13px] font-medium text-foreground">{action.assignee}</span>
                       </motion.button>
 
                       {/* Site */}
                       <motion.button
                         whileTap={{ scale: 0.99 }}
                         onClick={() => { setTempSite(action.site ?? ''); setShowSiteSheet(true); }}
-                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
-                        style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left border-b border-divider/40"
                       >
-                        <svg className="w-4 h-4 text-neutral-400 flex-shrink-0" fill="none" viewBox="0 0 16 16" strokeWidth="1.8" stroke="currentColor">
+                        <svg className="w-4 h-4 text-muted-foreground flex-shrink-0" fill="none" viewBox="0 0 16 16" strokeWidth="1.8" stroke="currentColor">
                           <rect x="2" y="2" width="12" height="12" rx="2" />
                           <path d="M2 6h12" />
                           <path d="M6 6v8" />
                         </svg>
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Site</span>
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Site</span>
                         {action.site ? (
-                          <span className="text-[13px] font-medium text-neutral-800">{action.site}</span>
+                          <span className="text-[13px] font-medium text-foreground">{action.site}</span>
                         ) : (
-                          <span className="text-[13px] text-neutral-400">Add site</span>
+                          <span className="text-[13px] text-muted-foreground">Add site</span>
                         )}
                       </motion.button>
 
@@ -657,17 +652,16 @@ function ActionDetailSheet({
                       <motion.button
                         whileTap={{ scale: 0.99 }}
                         onClick={() => { setTempAsset(action.asset ?? ''); setShowAssetSheet(true); }}
-                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
-                        style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+                        className="w-full flex items-center gap-3 px-4 py-3.5 text-left border-b border-divider/40"
                       >
-                        <svg className="w-4 h-4 text-neutral-400 flex-shrink-0" fill="none" viewBox="0 0 16 16" strokeWidth="1.8" stroke="currentColor">
+                        <svg className="w-4 h-4 text-muted-foreground flex-shrink-0" fill="none" viewBox="0 0 16 16" strokeWidth="1.8" stroke="currentColor">
                           <path d="M8 2l5 3v5l-5 3-5-3V5l5-3z" />
                         </svg>
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Asset</span>
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Asset</span>
                         {action.asset ? (
-                          <span className="text-[13px] font-medium text-neutral-800">{action.asset}</span>
+                          <span className="text-[13px] font-medium text-foreground">{action.asset}</span>
                         ) : (
-                          <span className="text-[13px] text-neutral-400">Add asset</span>
+                          <span className="text-[13px] text-muted-foreground">Add asset</span>
                         )}
                       </motion.button>
 
@@ -677,8 +671,8 @@ function ActionDetailSheet({
                         onClick={() => setShowLabelsSheet(true)}
                         className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
                       >
-                        <Tag className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
-                        <span className="text-[13px] text-neutral-500 w-24 flex-shrink-0">Labels</span>
+                        <Tag className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
+                        <span className="text-[13px] text-muted-foreground w-24 flex-shrink-0">Labels</span>
                         {labels.length > 0 ? (
                           <div className="flex flex-wrap gap-1">
                             {labels.map(lbl => (
@@ -688,19 +682,19 @@ function ActionDetailSheet({
                             ))}
                           </div>
                         ) : (
-                          <span className="text-[13px] text-neutral-400">Add labels</span>
+                          <span className="text-[13px] text-muted-foreground">Add labels</span>
                         )}
                       </motion.button>
                     </div>
 
                     {/* INSPECTIONS section */}
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
-                      <button onClick={() => setInspectionsExpanded(!inspectionsExpanded)} className="w-full flex items-center justify-between px-4 py-3 bg-white">
+                    <div className="rounded-xl overflow-hidden border border-divider/60">
+                      <button onClick={() => setInspectionsExpanded(!inspectionsExpanded)} className="w-full flex items-center justify-between px-4 py-3 bg-card">
                         <div className="flex items-center gap-2">
-                          <ClipboardList className="w-4 h-4 text-neutral-500" strokeWidth={1.8} />
-                          <span className="text-[12px] font-semibold uppercase tracking-[0.09em] text-neutral-500">Inspections</span>
+                          <ClipboardList className="w-4 h-4 text-muted-foreground" strokeWidth={1.8} />
+                          <span className="text-[12px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">Inspections</span>
                         </div>
-                        <ChevronDown className="w-4 h-4 text-neutral-400 transition-transform" strokeWidth={2} style={{ transform: inspectionsExpanded ? 'rotate(0deg)' : 'rotate(-90deg)' }} />
+                        <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform" strokeWidth={2} style={{ transform: inspectionsExpanded ? 'rotate(0deg)' : 'rotate(-90deg)' }} />
                       </button>
 
                       <AnimatePresence initial={false}>
@@ -714,11 +708,11 @@ function ActionDetailSheet({
                                       <ClipboardList className="w-4 h-4" style={{ color: '#2563EB' }} strokeWidth={1.8} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <p className="text-[13px] font-semibold text-neutral-900 truncate">{linkedTemplate.title}</p>
-                                      <p className="text-[11px] text-neutral-500 mt-0.5">{linkedTemplate.category}</p>
+                                      <p className="text-[13px] font-semibold text-foreground truncate">{linkedTemplate.title}</p>
+                                      <p className="text-[11px] text-muted-foreground mt-0.5">{linkedTemplate.category}</p>
                                     </div>
-                                    <button onClick={() => onUnlinkTemplate(action.id)} className="w-7 h-7 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0">
-                                      <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+                                    <button onClick={() => onUnlinkTemplate(action.id)} className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                      <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                                     </button>
                                   </div>
                                 ) : (
@@ -745,28 +739,28 @@ function ActionDetailSheet({
                     </div>
 
                     {/* Shared With (Links) section */}
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
+                    <div className="rounded-xl overflow-hidden border border-divider/60">
                       <button
                         onClick={() => setSharedWithExpanded(!sharedWithExpanded)}
-                        className="w-full flex items-center justify-between px-4 py-3 bg-white"
+                        className="w-full flex items-center justify-between px-4 py-3 bg-card"
                       >
                         <div className="flex items-center gap-2">
-                          <Link2 className="w-4 h-4 text-neutral-500" strokeWidth={1.8} />
-                          <span className="text-[12px] font-semibold uppercase tracking-[0.09em] text-neutral-500">Shared With</span>
+                          <Link2 className="w-4 h-4 text-muted-foreground" strokeWidth={1.8} />
+                          <span className="text-[12px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">Shared With</span>
                           {sharedWith.length > 0 && (
                             <span className="text-[11px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(37,99,235,0.10)', color: '#2563EB' }}>
                               {sharedWith.length}
                             </span>
                           )}
                         </div>
-                        <ChevronDown className="w-4 h-4 text-neutral-400 transition-transform" strokeWidth={2} style={{ transform: sharedWithExpanded ? 'rotate(0deg)' : 'rotate(-90deg)' }} />
+                        <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform" strokeWidth={2} style={{ transform: sharedWithExpanded ? 'rotate(0deg)' : 'rotate(-90deg)' }} />
                       </button>
 
                       <AnimatePresence initial={false}>
                         {sharedWithExpanded && (
                           <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }} style={{ overflow: 'hidden' }}>
                             <div className="px-4 pb-4 space-y-2" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                              <p className="text-[11px] text-neutral-400 pt-3 leading-relaxed">
+                              <p className="text-[11px] text-muted-foreground pt-3 leading-relaxed">
                                 People below can access this action. The creator always has access.
                               </p>
 
@@ -778,12 +772,12 @@ function ActionDetailSheet({
                                   >
                                     {getInitials(person)}
                                   </div>
-                                  <span className="flex-1 text-[13px] font-medium text-neutral-800">{person}</span>
+                                  <span className="flex-1 text-[13px] font-medium text-foreground">{person}</span>
                                   <button
                                     onClick={() => onActionUpdate(action.id, { sharedWith: sharedWith.filter(p => p !== person) })}
-                                    className="w-7 h-7 rounded-full bg-neutral-100 flex items-center justify-center"
+                                    className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center"
                                   >
-                                    <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+                                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                                   </button>
                                 </div>
                               ))}
@@ -805,28 +799,28 @@ function ActionDetailSheet({
 
                     {/* Footer */}
                     <div className="pt-2">
-                      <p className="text-[12px] text-neutral-400">Created by {action.assignee} · {action.dueDate}</p>
+                      <p className="text-[12px] text-muted-foreground">Created by {action.assignee} · {action.dueDate}</p>
                     </div>
                   </div>
                 )}
 
                 {detailTab === 'activity' && (
                   <div className="space-y-3 py-2">
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.09em] text-neutral-400">Activity Timeline</p>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">Activity Timeline</p>
                     {action.timeline.length > 0 ? (
-                      <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
+                      <div className="rounded-xl overflow-hidden border border-divider/60">
                         {action.timeline.map((entry, i) => (
-                          <div key={entry.id} className="flex items-start gap-3 px-4 py-3 bg-white" style={{ borderBottom: i < action.timeline.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
+                          <div key={entry.id} className="flex items-start gap-3 px-4 py-3 bg-card" style={{ borderBottom: i < action.timeline.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
                             <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#2563EB' }} />
                             <div>
-                              <p className="text-[13px] font-medium text-neutral-800">{entry.label}</p>
-                              <p className="text-[11px] text-neutral-400 mt-0.5">{entry.date}</p>
+                              <p className="text-[13px] font-medium text-foreground">{entry.label}</p>
+                              <p className="text-[11px] text-muted-foreground mt-0.5">{entry.date}</p>
                             </div>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-[13px] text-neutral-400 text-center py-8">No activity yet.</p>
+                      <p className="text-[13px] text-muted-foreground text-center py-8">No activity yet.</p>
                     )}
                   </div>
                 )}
@@ -836,8 +830,8 @@ function ActionDetailSheet({
         )}
       </AnimatePresence>
 
-      {/* ─── Status sheet ─── */}
-      <BottomSheet isOpen={showStatusSheet} onClose={() => setShowStatusSheet(false)} title="Update Status">
+      {/* ─── Status sheet (MiniSheet z-[80/90] so it sits above ActionDetailSheet z-65) ─── */}
+      <MiniSheet isOpen={showStatusSheet} onClose={() => setShowStatusSheet(false)} title="Ganti Status" height="65%">
         <div className="space-y-2">
           {workflowStatuses.map(s => (
             <button
@@ -845,25 +839,25 @@ function ActionDetailSheet({
               onClick={() => { if (action) onStatusChange(action.id, s.id); setShowStatusSheet(false); }}
               className="w-full h-12 rounded-xl border text-[13px] font-semibold flex items-center gap-3 px-4"
               style={{
-                background: action?.workflowStatusId === s.id ? `${s.color}12` : 'white',
-                borderColor: action?.workflowStatusId === s.id ? `${s.color}50` : 'rgba(0,0,0,0.08)',
-                color: action?.workflowStatusId === s.id ? s.color : '#374151',
+                background: action?.workflowStatusId === s.id ? `${s.color}12` : 'var(--card)',
+                borderColor: action?.workflowStatusId === s.id ? `${s.color}50` : 'var(--divider)',
+                color: action?.workflowStatusId === s.id ? s.color : 'var(--foreground)',
               }}
             >
               <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: s.color }} />
               {s.label}
               {action?.workflowStatusId === s.id && (
-                <span className="ml-auto text-[11px] font-medium" style={{ color: s.color }}>Current</span>
+                <Check className="ml-auto w-4 h-4 flex-shrink-0" style={{ color: s.color }} strokeWidth={2.5} />
               )}
             </button>
           ))}
-          <div className="pt-2 border-t border-neutral-100">
-            <button onClick={() => { setShowStatusSheet(false); onWorkflowSettingsOpen(); }} className="w-full h-11 rounded-xl text-[13px] font-medium text-neutral-500 hover:bg-neutral-50">
-              Manage workflow statuses…
+          <div className="pt-2 border-t border-divider/50">
+            <button onClick={() => { setShowStatusSheet(false); onWorkflowSettingsOpen(); }} className="w-full h-11 rounded-xl text-[13px] font-medium text-muted-foreground hover:bg-surface">
+              Kelola workflow status…
             </button>
           </div>
         </div>
-      </BottomSheet>
+      </MiniSheet>
 
       {/* ─── Priority picker ─── */}
       <MiniSheet isOpen={showPrioritySheet} onClose={() => setShowPrioritySheet(false)} title="Set Priority" height="45%">
@@ -875,8 +869,8 @@ function ActionDetailSheet({
               onClick={() => { if (action) onActionUpdate(action.id, { priority: p }); setShowPrioritySheet(false); }}
               className="w-full h-13 flex items-center gap-3 px-4 py-3.5 rounded-xl"
               style={{
-                background: action?.priority === p ? `${PRIORITY_COLOR[p]}10` : 'white',
-                border: `1px solid ${action?.priority === p ? `${PRIORITY_COLOR[p]}40` : 'rgba(0,0,0,0.08)'}`,
+                background: action?.priority === p ? `${PRIORITY_COLOR[p]}10` : 'var(--card)',
+                border: `1px solid ${action?.priority === p ? `${PRIORITY_COLOR[p]}40` : 'var(--divider)'}`,
               }}
             >
               <Flag className="w-4 h-4 flex-shrink-0" style={{ color: PRIORITY_COLOR[p] }} strokeWidth={1.8} />
@@ -890,13 +884,13 @@ function ActionDetailSheet({
       {/* ─── Due date picker ─── */}
       <MiniSheet isOpen={showDueDateSheet} onClose={() => setShowDueDateSheet(false)} title="Due Date" height="40%">
         <div className="space-y-4">
-          <p className="text-[13px] text-neutral-500">Enter the due date for this action:</p>
+          <p className="text-[13px] text-muted-foreground">Enter the due date for this action:</p>
           <input
             type="text"
             value={tempDueDate}
             onChange={e => setTempDueDate(e.target.value)}
             placeholder="e.g. 5 Mar 2026"
-            className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+            className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
             style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
             autoFocus
           />
@@ -922,7 +916,7 @@ function ActionDetailSheet({
             value={tempAssignee}
             onChange={e => setTempAssignee(e.target.value)}
             placeholder="e.g. Andi Nugroho"
-            className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+            className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
             style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
             autoFocus
           />
@@ -948,7 +942,7 @@ function ActionDetailSheet({
             value={tempSite}
             onChange={e => setTempSite(e.target.value)}
             placeholder="e.g. Service Center PIK"
-            className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+            className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
             style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
             autoFocus
           />
@@ -974,7 +968,7 @@ function ActionDetailSheet({
             value={tempAsset}
             onChange={e => setTempAsset(e.target.value)}
             placeholder="e.g. HRV-08, AV-214"
-            className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+            className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
             style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
             autoFocus
           />
@@ -1024,7 +1018,7 @@ function ActionDetailSheet({
                 }
               }}
               placeholder="Add a label…"
-              className="flex-1 h-11 px-4 rounded-xl text-[14px] text-neutral-900 outline-none"
+              className="flex-1 h-11 px-4 rounded-xl text-[14px] text-foreground outline-none"
               style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
               autoFocus
             />
@@ -1042,7 +1036,7 @@ function ActionDetailSheet({
               Add
             </motion.button>
           </div>
-          <p className="text-[12px] text-neutral-400">Press Enter or tap Add to add a label.</p>
+          <p className="text-[12px] text-muted-foreground">Press Enter or tap Add to add a label.</p>
         </div>
       </MiniSheet>
 
@@ -1054,7 +1048,7 @@ function ActionDetailSheet({
             value={tempPerson}
             onChange={e => setTempPerson(e.target.value)}
             placeholder="e.g. Budi Santoso"
-            className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+            className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
             style={{ border: '1.5px solid rgba(37,99,235,0.30)', background: 'rgba(37,99,235,0.02)' }}
             autoFocus
           />
@@ -1153,7 +1147,7 @@ function CreateActionSheet({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 320 }}
-            className="fixed inset-x-0 bottom-0 z-[75] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[75] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
             style={{
               maxHeight: '92svh',
               display: 'flex',
@@ -1163,17 +1157,17 @@ function CreateActionSheet({
           >
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-              <div className="w-9 h-1 rounded-full bg-neutral-200" />
+              <div className="w-9 h-1 rounded-full bg-divider" />
             </div>
 
             {/* Header */}
-            <div className="px-5 py-3 flex items-center justify-between border-b border-neutral-100 flex-shrink-0">
-              <h2 className="text-[17px] font-semibold text-neutral-900">Tindakan Baru</h2>
+            <div className="px-5 py-3 flex items-center justify-between border-b border-divider/50 flex-shrink-0">
+              <h2 className="text-[17px] font-semibold text-foreground">Tindakan Baru</h2>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center"
+                className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center"
               >
-                <X className="w-4 h-4 text-neutral-500" strokeWidth={2} />
+                <X className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
               </button>
             </div>
 
@@ -1181,7 +1175,7 @@ function CreateActionSheet({
             <div className="flex-1 overflow-y-auto scrollbar-hide px-5 py-4 space-y-5">
               {/* Title */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Judul <span className="text-[#DC2626]">*</span>
                 </label>
                 <input
@@ -1190,14 +1184,14 @@ function CreateActionSheet({
                   onChange={e => setTitle(e.target.value)}
                   onKeyDown={e => { if (e.key === 'Enter' && canSubmit) handleSubmit(); }}
                   placeholder="Apa yang perlu dilakukan?"
-                  className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+                  className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
                   style={{ border: '1.5px solid rgba(37,99,235,0.25)', background: 'rgba(37,99,235,0.02)' }}
                 />
               </div>
 
               {/* Status */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Status
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -1227,7 +1221,7 @@ function CreateActionSheet({
 
               {/* Priority */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Prioritas
                 </label>
                 <div className="flex gap-2">
@@ -1239,7 +1233,7 @@ function CreateActionSheet({
                         'flex-1 h-9 rounded-xl text-[13px] font-semibold border transition-colors',
                         priority === p
                           ? PRIORITY_STYLE[p]
-                          : 'bg-neutral-50 text-neutral-400 border-transparent'
+                          : 'bg-surface text-muted-foreground border-transparent'
                       )}
                     >
                       {p}
@@ -1250,48 +1244,48 @@ function CreateActionSheet({
 
               {/* Due date */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Tenggat{' '}
-                  <span className="font-normal normal-case tracking-normal text-neutral-300">(opsional)</span>
+                  <span className="font-normal normal-case tracking-normal text-muted-foreground">(opsional)</span>
                 </label>
                 <input
                   type="text"
                   value={dueDate}
                   onChange={e => setDueDate(e.target.value)}
                   placeholder="e.g. 5 Mar 2026"
-                  className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+                  className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
                   style={{ border: '1.5px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.02)' }}
                 />
               </div>
 
               {/* Assignee */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Penanggung Jawab{' '}
-                  <span className="font-normal normal-case tracking-normal text-neutral-300">(opsional)</span>
+                  <span className="font-normal normal-case tracking-normal text-muted-foreground">(opsional)</span>
                 </label>
                 <input
                   type="text"
                   value={assignee}
                   onChange={e => setAssignee(e.target.value)}
                   placeholder="e.g. Riko Pratama"
-                  className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+                  className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
                   style={{ border: '1.5px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.02)' }}
                 />
               </div>
 
               {/* Source */}
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-neutral-400 block mb-2">
+                <label className="text-[11px] font-bold uppercase tracking-[0.09em] text-muted-foreground block mb-2">
                   Sumber Inspeksi{' '}
-                  <span className="font-normal normal-case tracking-normal text-neutral-300">(opsional)</span>
+                  <span className="font-normal normal-case tracking-normal text-muted-foreground">(opsional)</span>
                 </label>
                 <input
                   type="text"
                   value={source}
                   onChange={e => setSource(e.target.value)}
                   placeholder="e.g. PDI Avanza 2024 - Dealer Sunter"
-                  className="w-full h-12 px-4 rounded-xl text-[15px] text-neutral-900 outline-none"
+                  className="w-full h-12 px-4 rounded-xl text-[15px] text-foreground outline-none"
                   style={{ border: '1.5px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.02)' }}
                 />
               </div>
@@ -1299,7 +1293,7 @@ function CreateActionSheet({
 
             {/* Footer */}
             <div
-              className="px-5 flex-shrink-0 bg-white"
+              className="px-5 flex-shrink-0 bg-card"
               style={{
                 borderTop: '1px solid rgba(0,0,0,0.08)',
                 paddingTop: '12px',
@@ -1391,12 +1385,12 @@ export default function Actions() {
   if (!canUseActions) {
     return (
       <div className="bg-background min-h-full">
-        <div className="sticky top-0 z-20 status-bar-aware px-4 pb-3 border-b border-divider/50 bg-white">
-          <h1 className="text-[17px] font-semibold tracking-tight">Tindakan</h1>
+        <div className="sticky top-0 z-20 status-bar-aware px-4 pb-3 border-b border-divider/50 bg-card">
+          <h1 className="text-[17px] font-semibold tracking-tight text-foreground">Tindakan</h1>
           <p className="text-[12px] text-muted-foreground mt-0.5">Fitur enterprise dealer 100+ cabang</p>
         </div>
         <div className="px-4 py-8">
-          <div className="rounded-2xl border border-divider/60 bg-white p-4">
+          <div className="rounded-2xl border border-divider/60 bg-card p-4">
             <p className="text-[15px] font-semibold text-foreground">Fitur belum aktif untuk akun ini</p>
             <p className="text-[13px] text-muted-foreground mt-1.5 leading-6">
               Tindakan digunakan untuk monitoring temuan CRO oleh tim HO. Saat ini akun{' '}
@@ -1410,24 +1404,24 @@ export default function Actions() {
   }
 
   return (
-    <div className="bg-white min-h-full">
+    <div className="bg-card min-h-full">
       {/* ── Sticky header: title + summary + filters + search ── */}
-      <div className="sticky top-0 z-20 bg-white border-b border-neutral-200">
+      <div className="sticky top-0 z-20 bg-card border-b border-divider">
         <div className="status-bar-aware px-4 pb-2">
-          <h1 className="text-[17px] font-semibold tracking-tight text-neutral-900">Tindakan</h1>
+          <h1 className="text-[17px] font-semibold tracking-tight text-foreground">Tindakan</h1>
         </div>
 
       {/* Summary pill */}
       <div className="px-4 pt-3 pb-2">
-        <div className="h-8 rounded-lg border border-neutral-200 bg-white px-3 inline-flex items-center gap-2 text-[12px]">
-          <span className="font-medium text-neutral-800">{filtered.length} tindakan</span>
+        <div className="h-8 rounded-lg border border-divider bg-card px-3 inline-flex items-center gap-2 text-[12px]">
+          <span className="font-medium text-foreground">{filtered.length} tindakan</span>
           {workflowStatuses.map(s => {
             const count = actions.filter(a => a.workflowStatusId === s.id).length;
             if (!count) return null;
             return (
               <span key={s.id} className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.color }} />
-                <span className="text-neutral-500">{count} {s.label}</span>
+                <span className="text-muted-foreground">{count} {s.label}</span>
               </span>
             );
           })}
@@ -1444,18 +1438,18 @@ export default function Actions() {
 
       {/* Search */}
       <div className="px-4 pb-3">
-        <div className="flex items-center gap-2.5 h-10 px-3.5 rounded-xl" style={{ background: 'rgba(0,0,0,0.05)' }}>
-          <Search className="w-4 h-4 text-neutral-400 flex-shrink-0" strokeWidth={1.8} />
+        <div className="flex items-center gap-2.5 h-10 px-3.5 rounded-xl bg-secondary">
+          <Search className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.8} />
           <input
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search actions…"
-            className="flex-1 bg-transparent text-[14px] text-neutral-900 placeholder:text-neutral-400 outline-none"
+            className="flex-1 bg-transparent text-[14px] text-foreground placeholder:text-muted-foreground outline-none"
           />
           {search && (
             <button onClick={() => setSearch('')}>
-              <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+              <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
             </button>
           )}
         </div>
@@ -1467,7 +1461,7 @@ export default function Actions() {
       <div className="px-4 space-y-3 pb-[calc(80px+env(safe-area-inset-bottom,0px))]">
         {filtered.length === 0 && (
           <div className="py-16 text-center">
-            <p className="text-[14px] text-neutral-400">Belum ada tindakan</p>
+            <p className="text-[14px] text-muted-foreground">Belum ada tindakan</p>
           </div>
         )}
         {filtered.map(item => {
@@ -1477,8 +1471,8 @@ export default function Actions() {
               key={item.id}
               whileTap={{ scale: 0.98 }}
               onClick={() => setActiveAction(item)}
-              className="w-full text-left rounded-2xl bg-white overflow-hidden flex"
-              style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05)' }}
+              className="w-full text-left rounded-2xl bg-card overflow-hidden flex border border-divider/60"
+              style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07)' }}
             >
               {/* Status color strip */}
               <div className="w-1 flex-shrink-0" style={{ background: status?.color ?? '#D97706' }} />
@@ -1486,7 +1480,7 @@ export default function Actions() {
               <div className="flex-1 px-4 py-3.5 min-w-0">
                 {/* Top row: code + priority */}
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[11px] font-bold text-neutral-400 tracking-wide">{item.code}</span>
+                  <span className="text-[11px] font-bold text-muted-foreground tracking-wide">{item.code}</span>
                   <span
                     className={clsx('text-[11px] font-semibold px-2 py-0.5 rounded-full border', PRIORITY_STYLE[item.priority])}
                   >
@@ -1495,10 +1489,10 @@ export default function Actions() {
                 </div>
 
                 {/* Title */}
-                <p className="text-[14px] font-semibold text-neutral-900 leading-snug line-clamp-2">{item.title}</p>
+                <p className="text-[14px] font-semibold text-foreground leading-snug line-clamp-2">{item.title}</p>
 
                 {/* Source */}
-                <p className="text-[12px] text-neutral-500 mt-1 truncate">{item.source}</p>
+                <p className="text-[12px] text-muted-foreground mt-1 truncate">{item.source}</p>
 
                 {/* Bottom row: status + due date + assignee */}
                 <div className="flex items-center gap-3 mt-2.5">
@@ -1506,10 +1500,10 @@ export default function Actions() {
                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: status?.color ?? '#D97706' }} />
                     {status?.label ?? 'To Do'}
                   </span>
-                  <span className="text-[11px] text-neutral-400">·</span>
-                  <span className="text-[11px] text-neutral-500">{item.dueDate}</span>
-                  <span className="text-[11px] text-neutral-400">·</span>
-                  <span className="text-[11px] text-neutral-500 truncate">{item.assignee}</span>
+                  <span className="text-[11px] text-muted-foreground">·</span>
+                  <span className="text-[11px] text-muted-foreground">{item.dueDate}</span>
+                  <span className="text-[11px] text-muted-foreground">·</span>
+                  <span className="text-[11px] text-muted-foreground truncate">{item.assignee}</span>
                 </div>
               </div>
             </motion.button>

@@ -22,6 +22,7 @@ export interface Inspection {
   createdAt: Date;
   titleFields: TitleField[];
   totalPages: number;
+  pageTitle: string;
 }
 
 // ─── Blueprint ─────────────────────────────────────────────────────────────
@@ -77,6 +78,7 @@ export function createInspection(
     createdAt: new Date(),
     titleFields: fields,
     totalPages,
+    pageTitle: 'Title Page',
   };
   _store.set(id, insp);
   return insp;
@@ -100,6 +102,7 @@ export function ensureInspection(
     createdAt: new Date(),
     titleFields: fields,
     totalPages,
+    pageTitle: 'Title Page',
   };
   _store.set(id, insp);
   return insp;
@@ -122,4 +125,13 @@ export function updateInspectionTitleField(
       f.id === fieldId ? { ...f, value } : f,
     ),
   });
+}
+
+export function updateInspectionPageTitle(
+  inspectionId: string,
+  pageTitle: string,
+): void {
+  const insp = _store.get(inspectionId);
+  if (!insp) return;
+  _store.set(inspectionId, { ...insp, pageTitle });
 }

@@ -68,11 +68,11 @@ export default function ProfileDetail() {
 
   return (
     <div className="bg-background min-h-full">
-      <div className="status-bar-aware px-4 pb-3 border-b border-divider/50 bg-white">
+      <div className="status-bar-aware px-4 pb-3 border-b border-divider/50 bg-card">
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate(-1)}
-            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-neutral-100"
+            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-surface"
             aria-label="Kembali"
           >
             <ArrowLeft className="w-5 h-5 text-foreground" strokeWidth={2} />
@@ -85,7 +85,7 @@ export default function ProfileDetail() {
       </div>
 
       <div className="px-4 py-4 space-y-4 pb-8">
-        <section className="rounded-2xl border border-divider/60 bg-white p-4">
+        <section className="rounded-2xl border border-divider/60 bg-card p-4">
           <div className="flex items-center gap-3">
             <button
               onClick={openFilePicker}
@@ -117,7 +117,7 @@ export default function ProfileDetail() {
             {avatarUrl && (
               <button
                 onClick={handleRemovePhoto}
-                className="h-9 px-3 rounded-xl bg-neutral-100 text-neutral-700 text-[12px] font-semibold"
+                className="h-9 px-3 rounded-xl bg-secondary text-foreground text-[12px] font-semibold"
               >
                 Hapus Foto
               </button>
@@ -132,7 +132,7 @@ export default function ProfileDetail() {
           />
         </section>
 
-        <section className="rounded-2xl border border-divider/60 bg-white divide-y divide-divider/50 overflow-hidden">
+        <section className="rounded-2xl border border-divider/60 bg-card divide-y divide-divider/50 overflow-hidden">
           {[
             { label: 'Nama Lengkap', value: 'John Smith', icon: User },
             { label: 'Email', value: 'john.smith@company.com', icon: Mail },
@@ -143,7 +143,7 @@ export default function ProfileDetail() {
             const Icon = item.icon;
             return (
               <div key={item.label} className="px-4 py-3 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
                   <Icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.8} />
                 </div>
                 <div>

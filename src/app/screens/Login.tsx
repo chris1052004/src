@@ -44,13 +44,13 @@ function InputField({
 }: InputFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="block text-[12px] font-semibold text-neutral-600 tracking-wide uppercase">
+      <label htmlFor={id} className="block text-[12px] font-semibold text-muted-foreground tracking-wide uppercase">
         {label}
         {required && <span className="text-danger-red ml-1 normal-case font-normal">*</span>}
       </label>
       <div className="relative">
         {leftIcon && (
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none">
             {leftIcon}
           </span>
         )}
@@ -63,12 +63,12 @@ function InputField({
           placeholder={placeholder}
           autoComplete={autoComplete}
           aria-invalid={Boolean(error)}
-          className={`h-13 w-full rounded-2xl bg-neutral-50 text-neutral-900 text-[14px] placeholder:text-neutral-400 transition-all duration-200 focus:outline-none focus:bg-white focus:ring-2 focus:ring-offset-0 border ${
+          className={`h-13 w-full rounded-2xl bg-surface text-foreground text-[14px] placeholder:text-muted-foreground transition-all duration-200 focus:outline-none focus:bg-card focus:ring-2 focus:ring-offset-0 border ${
             leftIcon ? 'pl-11' : 'pl-4'
           } ${rightSlot ? 'pr-12' : 'pr-4'} ${
             error
               ? 'border-red-300 focus:ring-red-200 bg-red-50/40'
-              : 'border-neutral-200 focus:border-primary-blue/50 focus:ring-primary-blue/15'
+              : 'border-divider focus:border-primary-blue/50 focus:ring-primary-blue/15'
           }`}
         />
         {rightSlot && (
@@ -151,7 +151,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-full flex flex-col overflow-hidden bg-white">
+    <div className="h-full flex flex-col overflow-hidden bg-card">
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <div
@@ -199,10 +199,10 @@ export default function Login() {
         style={{ paddingBottom: 'max(env(safe-area-inset-bottom, 0px) + 16px, 28px)' }}
       >
         {/* Lift card */}
-        <div className="bg-white rounded-t-[32px] -mt-6 px-6 pt-7 pb-4 shadow-[0_-8px_32px_rgba(15,23,42,0.10)] min-h-full">
+        <div className="bg-card rounded-t-[32px] -mt-6 px-6 pt-7 pb-4 shadow-[0_-8px_32px_rgba(15,23,42,0.10)] min-h-full">
 
           {/* Drag handle */}
-          <div className="w-10 h-1 rounded-full bg-neutral-200 mx-auto mb-7" />
+          <div className="w-10 h-1 rounded-full bg-divider mx-auto mb-7" />
 
           <form className="space-y-4" onSubmit={handleSubmit} noValidate>
             <InputField
@@ -236,7 +236,7 @@ export default function Login() {
                   type="button"
                   aria-label={showPassword ? 'Sembunyikan password' : 'Tampilkan password'}
                   onClick={() => setShowPassword((s) => !s)}
-                  className="w-8 h-8 rounded-xl flex items-center justify-center text-neutral-400 hover:bg-neutral-100 transition-colors"
+                  className="w-8 h-8 rounded-xl flex items-center justify-center text-muted-foreground hover:bg-secondary transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -245,11 +245,11 @@ export default function Login() {
 
             {/* Remember me + Forgot */}
             <div className="flex items-center justify-between pt-1">
-              <label className="inline-flex items-center gap-2.5 text-[13px] text-neutral-600 select-none cursor-pointer">
+              <label className="inline-flex items-center gap-2.5 text-[13px] text-muted-foreground select-none cursor-pointer">
                 <div
                   onClick={() => setRememberMe((r) => !r)}
                   className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
-                    rememberMe ? 'bg-primary-blue border-primary-blue' : 'border-neutral-300 bg-white'
+                    rememberMe ? 'bg-primary-blue border-primary-blue' : 'border-divider bg-card'
                   }`}
                 >
                   {rememberMe && (
@@ -294,14 +294,14 @@ export default function Login() {
 
           {/* Security note */}
           <div className="mt-6 flex items-center justify-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-neutral-300" strokeWidth={2} />
-            <p className="text-[11px] text-neutral-400">
+            <ShieldCheck className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
+            <p className="text-[11px] text-muted-foreground">
               Akses khusus pengguna terdaftar
             </p>
           </div>
 
           {/* Footer */}
-          <p className="mt-3 text-center text-[11px] text-neutral-300">
+          <p className="mt-3 text-center text-[11px] text-muted-foreground">
             © 2026 G Tech Solutions
           </p>
         </div>

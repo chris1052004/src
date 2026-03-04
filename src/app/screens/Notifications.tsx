@@ -119,7 +119,7 @@ export default function Notifications() {
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-1.5">
           {label}
         </p>
-        <div className="rounded-xl border border-divider/60 bg-white divide-y divide-divider/50 overflow-hidden">
+        <div className="rounded-xl border border-divider/60 bg-card divide-y divide-divider/50 overflow-hidden">
           {items.map((notif) => {
             const { Icon, ring, icon } = TYPE_META[notif.type];
             const isRead = readIds.has(notif.id);
@@ -130,7 +130,7 @@ export default function Notifications() {
                   markRead(notif.id);
                   navigate(notif.route);
                 }}
-                className={`w-full text-left px-4 py-3.5 flex items-start gap-3 active:bg-neutral-50 ${
+                className={`w-full text-left px-4 py-3.5 flex items-start gap-3 active:bg-surface ${
                   isRead ? 'opacity-55' : ''
                 }`}
               >
@@ -168,11 +168,11 @@ export default function Notifications() {
     <div className="min-h-full bg-background">
 
       {/* ── Sticky Header ───────────────────────────────────────── */}
-      <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-divider/50 px-4 status-bar-aware pb-3">
+      <div className="sticky top-0 z-30 bg-card/95 backdrop-blur-sm border-b border-divider/50 px-4 status-bar-aware pb-3">
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate(-1)}
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-neutral-100 flex-shrink-0"
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-secondary flex-shrink-0"
             aria-label="Kembali"
           >
             <ArrowLeft className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
@@ -201,7 +201,7 @@ export default function Notifications() {
         {NOTIFICATIONS.length === 0 ? (
           /* Empty state */
           <div className="py-20 flex flex-col items-center gap-3 text-center">
-            <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center">
               <Bell className="w-6 h-6 text-muted-foreground/50" strokeWidth={1.5} />
             </div>
             <div>

@@ -246,7 +246,7 @@ function ResponseSetEditorSheet({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 32, stiffness: 340 }}
-            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[90] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
             style={{
               maxHeight: '84vh',
               display: 'flex',
@@ -256,20 +256,20 @@ function ResponseSetEditorSheet({
           >
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-              <div className="w-9 h-1 rounded-full bg-neutral-200" />
+              <div className="w-9 h-1 rounded-full bg-secondary" />
             </div>
 
             {/* Header */}
-            <div className="px-5 py-3 flex items-center gap-3 border-b border-neutral-100 flex-shrink-0">
+            <div className="px-5 py-3 flex items-center gap-3 border-b border-divider flex-shrink-0">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="w-9 h-9 rounded-full bg-neutral-100 flex items-center justify-center"
+                className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center"
                 aria-label="Kembali"
               >
-                <ArrowLeft className="w-4 h-4 text-neutral-600" strokeWidth={2.2} />
+                <ArrowLeft className="w-4 h-4 text-muted-foreground" strokeWidth={2.2} />
               </motion.button>
-              <h2 className="text-[17px] font-semibold flex-1 text-neutral-900">
+              <h2 className="text-[17px] font-semibold flex-1 text-foreground">
                 {set?.isBuiltIn ? 'Edit set jawaban' : (set?.options.length === 0 ? 'Buat set jawaban' : 'Edit set jawaban')}
               </h2>
               <button
@@ -294,25 +294,25 @@ function ResponseSetEditorSheet({
                   style={{ border: '1px solid rgba(0,0,0,0.08)' }}
                 >
                   {/* Label row */}
-                  <div className="flex items-center h-12 px-3 gap-2 bg-white">
-                    <GripVertical className="w-4 h-4 text-neutral-300 flex-shrink-0" strokeWidth={1.5} />
+                  <div className="flex items-center h-12 px-3 gap-2 bg-card">
+                    <GripVertical className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={1.5} />
                     <input
                       value={opt.label}
                       onChange={e => handleOptionLabelChange(idx, e.target.value)}
                       placeholder="Nama opsi…"
-                      className="flex-1 text-[14px] font-semibold outline-none bg-transparent"
+                      className="flex-1 text-[14px] font-semibold outline-none bg-transparent placeholder:text-muted-foreground"
                       style={{ color: (CHIP_COLORS[opt.color] ?? CHIP_COLORS.neutral).text }}
                     />
                     <button
                       onClick={() => handleRemoveOption(idx)}
-                      className="w-7 h-7 rounded-full bg-neutral-100 flex items-center justify-center flex-shrink-0"
+                      className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center flex-shrink-0"
                     >
-                      <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+                      <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                     </button>
                   </div>
 
                   {/* Color palette row */}
-                  <div className="flex items-center gap-1.5 px-3 pb-3 pt-1 flex-wrap bg-neutral-50">
+                  <div className="flex items-center gap-1.5 px-3 pb-3 pt-1 flex-wrap bg-surface">
                     {COLOR_PALETTE.map(c => {
                       const cs = CHIP_COLORS[c];
                       const selected = opt.color === c;
@@ -354,7 +354,7 @@ function ResponseSetEditorSheet({
 
               {/* N/A toggle */}
               <div
-                className="flex items-center justify-between h-12 px-4 rounded-xl bg-white"
+                className="flex items-center justify-between h-12 px-4 rounded-xl bg-card"
                 style={{ border: '1px solid rgba(0,0,0,0.08)' }}
               >
                 <div className="flex items-center gap-2.5">
@@ -364,7 +364,7 @@ function ResponseSetEditorSheet({
                   >
                     N/A
                   </span>
-                  <span className="text-[14px] text-neutral-700">Sertakan N/A</span>
+                  <span className="text-[14px] text-foreground">Sertakan N/A</span>
                 </div>
                 <button
                   onClick={() => setHasNA(!hasNA)}
@@ -382,7 +382,7 @@ function ResponseSetEditorSheet({
               {/* Preview */}
               {editableOptions.filter(o => o.label.trim()).length > 0 && (
                 <div className="pt-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-neutral-400 mb-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted-foreground mb-2">
                     Preview
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -467,7 +467,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 320 }}
-            className="fixed inset-x-0 bottom-0 z-[70] max-w-[480px] mx-auto rounded-t-[28px] bg-white"
+            className="fixed inset-x-0 bottom-0 z-[70] max-w-[480px] mx-auto rounded-t-[28px] bg-card"
             style={{
               maxHeight: '88vh',
               display: 'flex',
@@ -477,7 +477,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
           >
             {/* Drag handle */}
             <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-              <div className="w-9 h-1 rounded-full bg-neutral-200" />
+              <div className="w-9 h-1 rounded-full bg-secondary" />
             </div>
 
             {/* Header */}
@@ -489,16 +489,16 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                 style={{ background: 'rgba(0,0,0,0.07)' }}
                 aria-label="Tutup"
               >
-                <X className="w-4 h-4 text-neutral-600" strokeWidth={2.2} />
+                <X className="w-4 h-4 text-muted-foreground" strokeWidth={2.2} />
               </motion.button>
-              <h2 className="text-[18px] font-semibold text-neutral-900 flex-1">Type of response</h2>
+              <h2 className="text-[18px] font-semibold text-foreground flex-1">Type of response</h2>
             </div>
 
             {/* Search */}
             <div className="px-4 pb-3 flex-shrink-0">
               <div className="relative">
                 <Search
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none"
                   strokeWidth={1.8}
                 />
                 <input
@@ -506,7 +506,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                   placeholder="Search…"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full h-10 pl-10 pr-10 rounded-xl text-[14px] outline-none text-neutral-900 placeholder:text-neutral-400"
+                  className="w-full h-10 pl-10 pr-10 rounded-xl text-[14px] outline-none text-foreground placeholder:text-muted-foreground"
                   style={{
                     background: 'rgba(0,0,0,0.06)',
                     border: searchQuery ? '1.5px solid rgba(37,99,235,0.45)' : '1.5px solid transparent',
@@ -518,7 +518,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                     className="absolute right-3 top-1/2 -translate-y-1/2"
                     aria-label="Clear"
                   >
-                    <X className="w-3.5 h-3.5 text-neutral-400" strokeWidth={2} />
+                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                   </button>
                 )}
               </div>
@@ -533,7 +533,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
               {filteredSets.length > 0 && (
                 <section className="mb-2">
                   <div className="flex items-center justify-between px-5 py-2.5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-neutral-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">
                       Multiple choice responses
                     </p>
                     <button
@@ -555,7 +555,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                           whileTap={{ scale: 0.995 }}
                           className="flex items-center gap-2.5 px-4 py-3.5 cursor-pointer"
                           style={{
-                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'white',
+                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'var(--card)',
                             borderBottom: i < filteredSets.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
                           }}
                           onClick={() => onSelect(set.id)}
@@ -584,7 +584,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                             style={{ background: 'rgba(0,0,0,0.06)' }}
                             aria-label="Edit set"
                           >
-                            <Pencil className="w-3.5 h-3.5 text-neutral-500" strokeWidth={2} />
+                            <Pencil className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
                           </motion.button>
                         </motion.div>
                       );
@@ -597,7 +597,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
               {filteredGlobal.length > 0 && (
                 <section className="mt-4 mb-2">
                   <div className="flex items-center justify-between px-5 py-2.5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-neutral-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">
                       Global Response Sets
                     </p>
                     <button className="flex items-center gap-0.5 text-[13px] font-semibold" style={{ color: '#2563EB' }}>
@@ -616,7 +616,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                           whileTap={{ scale: 0.995 }}
                           className="flex items-center gap-3 px-4 py-3 cursor-pointer"
                           style={{
-                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'white',
+                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'var(--card)',
                             borderBottom: i < filteredGlobal.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
                           }}
                           onClick={() => onSelect(g.id)}
@@ -627,7 +627,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                           >
                             <Icon className="w-[18px] h-[18px]" style={{ color: g.iconColor }} strokeWidth={1.8} />
                           </div>
-                          <span className="flex-1 text-[15px] font-medium text-neutral-800">{g.label}</span>
+                          <span className="flex-1 text-[15px] font-medium text-foreground">{g.label}</span>
                           {isSelected ? (
                             <div
                               className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -636,7 +636,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                               <Check className="w-3 h-3 text-white" strokeWidth={3} />
                             </div>
                           ) : (
-                            <ChevronRight className="w-4 h-4 text-neutral-300 flex-shrink-0" strokeWidth={2} />
+                            <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={2} />
                           )}
                         </motion.div>
                       );
@@ -649,7 +649,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
               {filteredOther.length > 0 && (
                 <section className="mt-4 mb-2">
                   <div className="flex items-center px-5 py-2.5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-neutral-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted-foreground">
                       Other responses
                     </p>
                   </div>
@@ -664,7 +664,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                           whileTap={{ scale: 0.995 }}
                           className="flex items-center gap-3 px-4 py-3 cursor-pointer"
                           style={{
-                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'white',
+                            background: isSelected ? 'rgba(37,99,235,0.05)' : 'var(--card)',
                             borderBottom: i < filteredOther.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
                           }}
                           onClick={() => onSelect(o.id)}
@@ -675,7 +675,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                           >
                             <Icon className="w-[18px] h-[18px]" style={{ color: o.iconColor }} strokeWidth={1.8} />
                           </div>
-                          <span className="flex-1 text-[15px] font-medium text-neutral-800">{o.label}</span>
+                          <span className="flex-1 text-[15px] font-medium text-foreground">{o.label}</span>
                           {isSelected ? (
                             <div
                               className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -684,7 +684,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
                               <Check className="w-3 h-3 text-white" strokeWidth={3} />
                             </div>
                           ) : (
-                            <ChevronRight className="w-4 h-4 text-neutral-300 flex-shrink-0" strokeWidth={2} />
+                            <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={2} />
                           )}
                         </motion.div>
                       );
@@ -695,7 +695,7 @@ function TypeOfResponseSheet({ isOpen, current, onClose, onSelect }: TypeSheetPr
 
               {!hasResults && (
                 <div className="py-14 text-center">
-                  <p className="text-[14px] text-neutral-400">No results for "{searchQuery}"</p>
+                  <p className="text-[14px] text-muted-foreground">No results for "{searchQuery}"</p>
                 </div>
               )}
             </div>
@@ -736,7 +736,7 @@ function SectionCard({
 
   return (
     <div
-      className="rounded-2xl bg-white overflow-hidden"
+      className="rounded-2xl bg-card overflow-hidden"
       style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04)' }}
     >
       {/* Section header */}
@@ -750,24 +750,20 @@ function SectionCard({
           </div>
         </motion.button>
 
-        {isTitlePage ? (
-          <h3 className="flex-1 min-w-0 text-[15px] font-semibold text-neutral-900 leading-tight">{section.title}</h3>
-        ) : (
-          <input
-            value={section.title}
-            onChange={e => onUpdateTitle(e.target.value)}
-            placeholder="Section title…"
-            className="flex-1 min-w-0 text-[15px] font-semibold text-neutral-900 leading-tight outline-none bg-transparent placeholder:text-neutral-300"
-            onClick={e => e.stopPropagation()}
-          />
-        )}
+        <input
+          value={section.title}
+          onChange={e => onUpdateTitle(e.target.value)}
+          placeholder={isTitlePage ? 'Title Page…' : 'Section title…'}
+          className="flex-1 min-w-0 text-[15px] font-semibold text-foreground leading-tight outline-none bg-transparent placeholder:text-muted-foreground"
+          onClick={e => e.stopPropagation()}
+        />
 
         <motion.button whileTap={{ scale: 0.94 }} onClick={onToggle} className="flex items-center gap-1 flex-shrink-0">
-          <span className="text-[12px] text-neutral-400">
+          <span className="text-[12px] text-muted-foreground">
             {section.questions.length}q
           </span>
           <motion.div animate={{ rotate: section.expanded ? 0 : -90 }} transition={{ duration: 0.2, ease }}>
-            <ChevronDown className="w-4 h-4 text-neutral-400" strokeWidth={2} />
+            <ChevronDown className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
           </motion.div>
         </motion.button>
       </div>
@@ -785,7 +781,7 @@ function SectionCard({
             {/* Description */}
             {section.description && (
               <p
-                className="px-4 pt-3 pb-2 text-[13px] text-neutral-500 leading-relaxed"
+                className="px-4 pt-3 pb-2 text-[13px] text-muted-foreground leading-relaxed"
                 style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}
               >
                 {section.description}
@@ -800,13 +796,13 @@ function SectionCard({
               >
                 {/* Column headers */}
                 <div
-                  className="flex items-center h-8 px-4 bg-neutral-50"
+                  className="flex items-center h-8 px-4 bg-surface"
                   style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
                 >
-                  <span className="flex-1 text-[10px] font-semibold uppercase tracking-[0.10em] text-neutral-400">
+                  <span className="flex-1 text-[10px] font-semibold uppercase tracking-[0.10em] text-muted-foreground">
                     Question
                   </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.10em] text-neutral-400 mr-3">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.10em] text-muted-foreground mr-3">
                     Extra options
                   </span>
                 </div>
@@ -817,20 +813,20 @@ function SectionCard({
                   return (
                     <div
                       key={question.id}
-                      className="flex items-center h-14 bg-white"
+                      className="flex items-center h-14 bg-card"
                       style={{
                         borderBottom:
                           i < section.questions.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
                       }}
                     >
                       {/* Drag handle */}
-                      <div className="px-2.5 h-full flex items-center text-neutral-300 cursor-grab active:cursor-grabbing flex-shrink-0">
+                      <div className="px-2.5 h-full flex items-center text-muted-foreground cursor-grab active:cursor-grabbing flex-shrink-0">
                         <GripVertical className="w-4 h-4" strokeWidth={1.5} />
                       </div>
 
                       {/* Label */}
                       <div className="flex-1 min-w-0 pr-2">
-                        <span className="text-[14px] font-medium text-neutral-800 leading-tight">
+                        <span className="text-[14px] font-medium text-foreground leading-tight">
                           {question.required && (
                             <span className="text-[#DC2626] mr-0.5">*</span>
                           )}
@@ -862,7 +858,7 @@ function SectionCard({
                   className="rounded-xl flex items-center justify-center py-6"
                   style={{ border: '1.5px dashed rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.01)' }}
                 >
-                  <p className="text-[13px] text-neutral-400">Type question here…</p>
+                  <p className="text-[13px] text-muted-foreground">Type question here…</p>
                 </div>
               </div>
             )}
@@ -870,7 +866,7 @@ function SectionCard({
             {/* Add question */}
             <motion.button
               whileTap={{ scale: 0.97 }}
-              className="mx-4 mb-4 w-[calc(100%-2rem)] h-10 flex items-center justify-center gap-2 rounded-xl text-[13px] font-medium text-neutral-500"
+              className="mx-4 mb-4 w-[calc(100%-2rem)] h-10 flex items-center justify-center gap-2 rounded-xl text-[13px] font-medium text-muted-foreground"
               style={{ border: '1.5px dashed rgba(0,0,0,0.14)' }}
             >
               <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
@@ -941,11 +937,11 @@ export default function TemplateBuilder() {
   /* ── Render ───────────────────────────────────────────────────────────── */
 
   return (
-    <div className="bg-[#F4F6FA]" style={{ minHeight: '100%' }}>
+    <div className="bg-background" style={{ minHeight: '100%' }}>
 
       {/* ════════ STICKY HEADER ════════════════════════════════════════════ */}
       <div
-        className="sticky top-0 z-40 bg-white"
+        className="sticky top-0 z-40 bg-card"
         style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         {/* Row 1 — App bar */}
@@ -958,10 +954,10 @@ export default function TemplateBuilder() {
               style={{ background: 'rgba(0,0,0,0.07)' }}
               aria-label="Back"
             >
-              <ArrowLeft className="w-4 h-4 text-neutral-700" strokeWidth={2.2} />
+              <ArrowLeft className="w-4 h-4 text-muted-foreground" strokeWidth={2.2} />
             </motion.button>
 
-            <p className="flex-1 min-w-0 text-[15px] font-semibold text-neutral-900 truncate px-1">
+            <p className="flex-1 min-w-0 text-[15px] font-semibold text-foreground truncate px-1">
               {templateTitle || 'Template Editor'}
             </p>
 
@@ -978,7 +974,7 @@ export default function TemplateBuilder() {
               style={{ background: 'rgba(0,0,0,0.07)' }}
               aria-label="More options"
             >
-              <Ellipsis className="w-4 h-4 text-neutral-600" strokeWidth={2} />
+              <Ellipsis className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
             </motion.button>
           </div>
         </div>
@@ -996,7 +992,7 @@ export default function TemplateBuilder() {
                 onClick={() => setActiveTab(tab)}
                 className="h-8 px-4 rounded-[8px] text-[13px] font-semibold transition-all"
                 style={{
-                  background: activeTab === tab ? 'white' : 'transparent',
+                  background: activeTab === tab ? 'var(--card)' : 'transparent',
                   color: activeTab === tab ? '#2563EB' : '#64748B',
                   boxShadow: activeTab === tab ? '0 1px 4px rgba(0,0,0,0.10)' : 'none',
                 }}
@@ -1045,11 +1041,11 @@ export default function TemplateBuilder() {
         >
           {/* Template header card */}
           <div
-            className="rounded-2xl bg-white overflow-hidden"
+            className="rounded-2xl bg-card overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04)' }}
           >
             <div className="px-4 pt-4 pb-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.10em] text-neutral-400 mb-2">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.10em] text-muted-foreground mb-2">
                 Template name
               </p>
               <input
@@ -1057,11 +1053,11 @@ export default function TemplateBuilder() {
                 value={templateTitle}
                 onChange={e => setTemplateTitle(e.target.value)}
                 placeholder="Inspection template name…"
-                className="w-full text-[22px] font-semibold text-neutral-900 leading-snug outline-none bg-transparent placeholder:text-neutral-300 tracking-tight"
+                className="w-full text-[22px] font-semibold text-foreground leading-snug outline-none bg-transparent placeholder:text-muted-foreground tracking-tight"
               />
             </div>
 
-            <div className="h-px mx-4 bg-neutral-100" />
+            <div className="h-px mx-4 bg-divider" />
 
             <div className="px-4 py-3">
               <textarea
@@ -1069,7 +1065,7 @@ export default function TemplateBuilder() {
                 onChange={e => setDescription(e.target.value)}
                 placeholder="Add a summary… (e.g. PDI Avanza 2024, 20 questions, 15 min)"
                 rows={2}
-                className="w-full text-[14px] text-neutral-600 leading-relaxed outline-none bg-transparent resize-none placeholder:text-neutral-300"
+                className="w-full text-[14px] text-muted-foreground leading-relaxed outline-none bg-transparent resize-none placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -1107,50 +1103,50 @@ export default function TemplateBuilder() {
         >
           {/* Report header card */}
           <div
-            className="rounded-2xl bg-white overflow-hidden"
+            className="rounded-2xl bg-card overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04)' }}
           >
             {/* Blue accent bar */}
             <div className="h-1 w-full bg-primary-blue" />
             <div className="px-4 pt-4 pb-3 space-y-1">
-              <p className="text-[18px] font-bold text-neutral-900 leading-snug">{templateTitle || 'Template Inspeksi Baru'}</p>
-              <div className="flex items-center gap-4 text-[12px] text-neutral-500 mt-1">
+              <p className="text-[18px] font-bold text-foreground leading-snug">{templateTitle || 'Template Inspeksi Baru'}</p>
+              <div className="flex items-center gap-4 text-[12px] text-muted-foreground mt-1">
                 <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" strokeWidth={1.8} /> 1 Mar 2026</span>
                 <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" strokeWidth={1.8} /> Dealer Sunter</span>
                 <span className="flex items-center gap-1"><User className="w-3.5 h-3.5" strokeWidth={1.8} /> Alex R.</span>
               </div>
             </div>
 
-            <div className="h-px mx-4 bg-neutral-100" />
+            <div className="h-px mx-4 bg-divider" />
 
             {/* Score summary row */}
-            <div className="px-4 py-3 grid grid-cols-3 divide-x divide-neutral-100">
+            <div className="px-4 py-3 grid grid-cols-3 divide-x divide-divider/50">
               <div className="pr-3 text-center">
                 <p className="text-[20px] font-bold text-emerald-500 leading-none">82%</p>
-                <p className="text-[10px] text-neutral-400 font-medium mt-1 uppercase tracking-wide">Score</p>
+                <p className="text-[10px] text-muted-foreground font-medium mt-1 uppercase tracking-wide">Score</p>
               </div>
               <div className="px-3 text-center">
                 <p className="text-[20px] font-bold text-amber-500 leading-none">3</p>
-                <p className="text-[10px] text-neutral-400 font-medium mt-1 uppercase tracking-wide">Flagged</p>
+                <p className="text-[10px] text-muted-foreground font-medium mt-1 uppercase tracking-wide">Flagged</p>
               </div>
               <div className="pl-3 text-center">
                 <p className="text-[20px] font-bold text-primary-blue leading-none">2</p>
-                <p className="text-[10px] text-neutral-400 font-medium mt-1 uppercase tracking-wide">Actions</p>
+                <p className="text-[10px] text-muted-foreground font-medium mt-1 uppercase tracking-wide">Actions</p>
               </div>
             </div>
           </div>
 
           {/* Flagged items & actions preview */}
           <div
-            className="rounded-2xl bg-white overflow-hidden"
+            className="rounded-2xl bg-card overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04)' }}
           >
             <div className="px-4 pt-3 pb-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.10em] text-neutral-400">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.10em] text-muted-foreground">
                 Flagged Items &amp; Actions
               </p>
             </div>
-            <div className="divide-y divide-neutral-100">
+            <div className="divide-y divide-divider/50">
               {[
                 { section: 'Eksterior', question: 'Kondisi lampu depan kiri', flag: 'Perlu diganti', hasAction: true },
                 { section: 'Eksterior', question: 'Kaca belakang retak', flag: 'Segera perbaiki', hasAction: true },
@@ -1159,9 +1155,9 @@ export default function TemplateBuilder() {
                 <div key={i} className="px-4 py-3 flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 mt-1.5" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wide leading-none mb-0.5">{item.section}</p>
-                    <p className="text-[13px] font-semibold text-neutral-800 leading-snug">{item.question}</p>
-                    <p className="text-[12px] text-neutral-500 mt-0.5">{item.flag}</p>
+                    <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide leading-none mb-0.5">{item.section}</p>
+                    <p className="text-[13px] font-semibold text-foreground leading-snug">{item.question}</p>
+                    <p className="text-[12px] text-muted-foreground mt-0.5">{item.flag}</p>
                   </div>
                   {item.hasAction && (
                     <span className="flex-shrink-0 text-[10px] font-semibold text-primary-blue bg-blue-50 px-2 py-0.5 rounded-full">
@@ -1175,13 +1171,13 @@ export default function TemplateBuilder() {
 
           {/* Page break label */}
           <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-neutral-200" />
-            <span className="text-[11px] font-medium text-neutral-400 px-1">— Page break —</span>
-            <div className="flex-1 h-px bg-neutral-200" />
+            <div className="flex-1 h-px bg-divider" />
+            <span className="text-[11px] font-medium text-muted-foreground px-1">— Page break —</span>
+            <div className="flex-1 h-px bg-divider" />
           </div>
 
           {/* Preview note */}
-          <p className="text-[11px] text-neutral-400 text-center pb-1">
+          <p className="text-[11px] text-muted-foreground text-center pb-1">
             This is a static preview. Actual report is generated from inspection data.
           </p>
         </div>
@@ -1190,7 +1186,7 @@ export default function TemplateBuilder() {
       {/* ════════ BOTTOM ADD BAR ════════════════════════════════════════════ */}
       {activeTab === 'build' && (
         <div
-          className="fixed left-0 right-0 z-40 bg-white"
+          className="fixed left-0 right-0 z-40 bg-card"
           style={{
             bottom: '56px',
             borderTop: '1px solid rgba(0,0,0,0.08)',

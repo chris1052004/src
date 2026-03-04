@@ -67,7 +67,7 @@ const sections: Section[] = [
 function statusIcon(status: SectionStatus) {
   if (status === 'completed') return <CheckCircle2 className="w-4 h-4 text-success-green" strokeWidth={2.1} />;
   if (status === 'in-progress') return <Circle className="w-4 h-4 text-primary-blue fill-primary-blue/20" strokeWidth={2} />;
-  return <Circle className="w-4 h-4 text-neutral-300" strokeWidth={1.7} />;
+  return <Circle className="w-4 h-4 text-muted-foreground" strokeWidth={1.7} />;
 }
 
 export default function InspectionDetail() {
@@ -92,11 +92,11 @@ export default function InspectionDetail() {
 
   return (
     <div className="bg-background min-h-full">
-      <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-divider/50 px-4 status-bar-aware pb-3">
+      <div className="sticky top-0 z-30 bg-card/95 backdrop-blur-sm border-b border-divider/50 px-4 status-bar-aware pb-3">
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate(-1)}
-            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-neutral-100"
+            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-surface"
           >
             <ArrowLeft className="w-5 h-5 text-foreground" strokeWidth={2} />
           </button>
@@ -116,7 +116,7 @@ export default function InspectionDetail() {
             </p>
             <p className="text-[13px] font-semibold text-foreground">{pct}%</p>
           </div>
-          <div className="mt-1.5 h-[4px] bg-neutral-100 rounded-full overflow-hidden">
+          <div className="mt-1.5 h-[4px] bg-secondary rounded-full overflow-hidden">
             <div className="h-full bg-primary-blue rounded-full" style={{ width: `${pct}%` }} />
           </div>
           <div className="mt-2 flex items-center gap-3 text-[11px]">
@@ -127,7 +127,7 @@ export default function InspectionDetail() {
       </div>
 
       <div className="px-4 pt-3 pb-4">
-        <div className="rounded-2xl border border-divider/60 bg-white divide-y divide-divider/50 overflow-hidden">
+        <div className="rounded-2xl border border-divider/60 bg-card divide-y divide-divider/50 overflow-hidden">
           {sections.map((section) => {
             const SectionIcon = section.icon;
             const progress = section.total ? Math.round((section.answered / section.total) * 100) : 0;
@@ -140,10 +140,10 @@ export default function InspectionDetail() {
                     section.route === 'form' ? `/app/inspections/${id}/form` : `/app/inspections/${id}/questions`
                   )
                 }
-                className="w-full text-left px-4 py-3 hover:bg-neutral-50"
+                className="w-full text-left px-4 py-3 hover:bg-surface"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
                     <SectionIcon className="w-4 h-4 text-muted-foreground" strokeWidth={1.8} />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -164,7 +164,7 @@ export default function InspectionDetail() {
                       </div>
                     </div>
                     <p className="text-[12px] text-muted-foreground mt-0.5">{section.subtitle}</p>
-                    <div className="mt-2 h-[3px] bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="mt-2 h-[3px] bg-secondary rounded-full overflow-hidden">
                       <div className="h-full bg-primary-blue rounded-full" style={{ width: `${progress}%` }} />
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function InspectionDetail() {
       <div style={{ height: 'calc(88px + env(safe-area-inset-bottom))' }} />
 
       <div
-        className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-divider/50 px-4 pt-3"
+        className="fixed bottom-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-sm border-t border-divider/50 px-4 pt-3"
         style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)' }}
       >
         <div className="flex items-center gap-3">

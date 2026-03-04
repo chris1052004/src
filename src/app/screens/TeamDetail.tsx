@@ -39,11 +39,11 @@ export default function TeamDetail() {
 
   return (
     <div className="bg-background min-h-full">
-      <div className="status-bar-aware px-4 pb-3 border-b border-divider/50 bg-white">
+      <div className="status-bar-aware px-4 pb-3 border-b border-divider/50 bg-card">
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate(-1)}
-            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-neutral-100"
+            className="w-9 h-9 -ml-1 rounded-xl flex items-center justify-center hover:bg-surface"
           >
             <ArrowLeft className="w-5 h-5 text-foreground" strokeWidth={2} />
           </button>
@@ -55,7 +55,7 @@ export default function TeamDetail() {
       </div>
 
       <div className="px-4 py-4 space-y-3 pb-8">
-        <section className="rounded-2xl border border-divider/60 bg-white p-4">
+        <section className="rounded-2xl border border-divider/60 bg-card p-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary-blue/10 flex items-center justify-center">
               <Users className="w-5 h-5 text-primary-blue" strokeWidth={1.9} />

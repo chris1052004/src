@@ -14,6 +14,7 @@ import {
   ensureInspection,
   getInspection,
   updateInspectionTitleField,
+  updateInspectionPageTitle,
   type TitleField,
 } from '../lib/inspectionStore';
 import { INSPECTION_SUMMARIES } from '../lib/inspectionData';
@@ -242,6 +243,10 @@ export default function InspectionTitlePage() {
   const [activeFieldId, setActiveFieldId] = useState<string | null>(null);
   // Which field is currently in inline-edit mode (fieldId)
   const [editingFieldId, setEditingFieldId] = useState<string | null>(null);
+  // Editable page title (shown in header + bottom bar)
+  const [pageTitle, setPageTitle] = useState(inspection?.pageTitle ?? 'Title Page');
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inspection) {
@@ -301,9 +306,35 @@ export default function InspectionTitlePage() {
 
           {/* Centered title + page */}
           <div className="flex-1 text-center">
-            <p className="text-[15px] font-semibold text-gray-900 leading-tight">
-              Title Page
-            </p>
+            {isEditingTitle ? (
+              <input
+                ref={titleInputRef}
+                type="text"
+                value={pageTitle}
+                onChange={(e) => setPageTitle(e.target.value)}
+                onBlur={() => {
+                  const trimmed = pageTitle.trim() || 'Title Page';
+                  setPageTitle(trimmed);
+                  setIsEditingTitle(false);
+                  if (inspectionId) updateInspectionPageTitle(inspectionId, trimmed);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
+                }}
+                autoFocus
+                className="w-full text-center text-[15px] font-semibold text-gray-900 leading-tight bg-blue-50 border border-blue-300 rounded-lg px-2 py-0.5 outline-none focus:border-blue-500"
+              />
+            ) : (
+              <button
+                onClick={() => {
+                  setIsEditingTitle(true);
+                  setTimeout(() => titleInputRef.current?.focus(), 0);
+                }}
+                className="text-[15px] font-semibold text-gray-900 leading-tight underline decoration-dashed decoration-gray-300 underline-offset-2 active:opacity-60 transition-opacity"
+              >
+                {pageTitle}
+              </button>
+            )}
             <p className="text-[11px] text-gray-400 mt-[-1px]">
               Page {PAGE}/{inspection.totalPages}
             </p>
@@ -370,7 +401,7 @@ export default function InspectionTitlePage() {
           <span className="text-[12px] text-gray-400">
             Page {PAGE} dari {inspection.totalPages}
           </span>
-          <span className="text-[12px] font-medium text-gray-500">Title Page</span>
+          <span className="text-[12px] font-medium text-gray-500">{pageTitle}</span>
         </div>
         <PageProgress current={PAGE} total={inspection.totalPages} />
 

@@ -78,7 +78,7 @@ const progressFilters: Array<InspectionStatus | 'All'> = ['All', 'In Progress', 
 function statusTone(status: InspectionStatus) {
   if (status === 'Overdue') return 'bg-danger-red/10 text-danger-red';
   if (status === 'Complete') return 'bg-success-green/10 text-success-green';
-  if (status === 'Draft') return 'bg-neutral-100 text-muted-foreground';
+  if (status === 'Draft') return 'bg-secondary text-muted-foreground';
   return 'bg-primary-blue/10 text-primary-blue';
 }
 
@@ -115,7 +115,7 @@ function OptionRow({
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center gap-4 py-3.5 text-left active:bg-black/[0.04] transition-colors"
+      className="w-full flex items-center gap-4 py-3.5 text-left active:bg-black/[0.04] dark:active:bg-white/[0.06] transition-colors"
     >
       <div className="w-10 h-10 rounded-xl bg-primary-blue/10 flex items-center justify-center flex-shrink-0 text-primary-blue">
         {icon}
@@ -190,7 +190,7 @@ function CreateTemplateSheet({
           >
             {/* Handle */}
             <div className="flex justify-center pt-3 flex-shrink-0">
-              <div className="w-10 h-1 bg-neutral-200 rounded-full" />
+              <div className="w-10 h-1 bg-divider rounded-full" />
             </div>
 
             {/* Header row */}
@@ -198,7 +198,7 @@ function CreateTemplateSheet({
               {step === 'ai' && (
                 <button
                   onClick={() => setStep('options')}
-                  className="w-8 h-8 rounded-full flex items-center justify-center bg-neutral-100 flex-shrink-0"
+                  className="w-8 h-8 rounded-full flex items-center justify-center bg-secondary flex-shrink-0"
                   aria-label="Kembali"
                 >
                   <ArrowLeft className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
@@ -209,7 +209,7 @@ function CreateTemplateSheet({
               </h3>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-neutral-100 flex-shrink-0"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-secondary flex-shrink-0"
                 aria-label="Tutup"
               >
                 <X className="w-4 h-4 text-muted-foreground" strokeWidth={2} />
@@ -509,7 +509,7 @@ export default function InspectionsList() {
                       <button
                         key={template.id}
                         onClick={() => setSelectedTemplate(template)}
-                        className="w-full text-left px-4 py-3.5 flex items-center gap-3 active:bg-black/[0.04] transition-colors"
+                        className="w-full text-left px-4 py-3.5 flex items-center gap-3 active:bg-black/[0.04] dark:active:bg-white/[0.06] transition-colors"
                       >
                         {/* Leading tonal icon */}
                         <div className="w-10 h-10 rounded-xl bg-primary-blue/10 flex items-center justify-center flex-shrink-0">
@@ -542,7 +542,7 @@ export default function InspectionsList() {
             </div>
           ) : (
             <div className="py-16 flex flex-col items-center gap-3 text-center">
-              <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center">
                 <LayoutList className="w-6 h-6 text-muted-foreground/50" strokeWidth={1.5} />
               </div>
               <div>
@@ -628,7 +628,7 @@ export default function InspectionsList() {
                         }
                         setSelectedInspection(item);
                       }}
-                      className="w-full text-left px-4 py-3.5 active:bg-black/[0.04] transition-colors"
+                      className="w-full text-left px-4 py-3.5 active:bg-black/[0.04] dark:active:bg-white/[0.06] transition-colors"
                     >
                       <div className="flex items-start gap-2 mb-1.5">
                         <p className="flex-1 text-[14px] font-semibold text-foreground">{item.title}</p>
@@ -642,7 +642,7 @@ export default function InspectionsList() {
                         {item.site} · {item.templateName}
                       </p>
                       <div className="mt-2 flex items-center gap-2">
-                        <div className="flex-1 h-1 rounded-full bg-neutral-100 overflow-hidden">
+                        <div className="flex-1 h-1 rounded-full bg-secondary overflow-hidden">
                           <div
                             className={`h-full rounded-full ${progressBarColor(item.status)}`}
                             style={{ width: `${pct}%` }}

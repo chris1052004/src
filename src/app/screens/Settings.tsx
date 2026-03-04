@@ -16,16 +16,16 @@ function SettingsList({ title, items }: { title: string; items: MenuItem[] }) {
   return (
     <section>
       <p className="text-[11px] text-muted-foreground uppercase tracking-wide font-semibold mb-2 px-1">{title}</p>
-      <div className="rounded-2xl border border-divider/60 bg-white divide-y divide-divider/50 overflow-hidden">
+      <div className="rounded-2xl border border-divider/60 bg-card divide-y divide-divider/50 overflow-hidden">
         {items.map((item) => {
           const Icon = item.icon;
           return (
             <button
               key={item.label}
               onClick={item.onClick}
-              className="w-full text-left px-4 py-3 hover:bg-neutral-50 flex items-center gap-3"
+              className="w-full text-left px-4 py-3 hover:bg-surface flex items-center gap-3"
             >
-              <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
                 <Icon className="w-4.5 h-4.5 text-muted-foreground" strokeWidth={1.8} />
               </div>
               <div className="flex-1 min-w-0">
@@ -85,12 +85,12 @@ export default function Settings() {
 
   return (
     <div className="bg-background min-h-full">
-      <div className="sticky top-0 z-20 status-bar-aware px-4 pb-3 border-b border-divider/50 bg-white">
+      <div className="sticky top-0 z-20 status-bar-aware px-4 pb-3 border-b border-divider/50 bg-card">
         <h1 className="text-[17px] font-semibold tracking-tight">Settings</h1>
       </div>
 
       <div className="px-4 py-4 space-y-4 pb-[calc(80px+env(safe-area-inset-bottom,0px))]">
-        <div className="rounded-2xl border border-divider/60 bg-white p-4">
+        <div className="rounded-2xl border border-divider/60 bg-card p-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-primary-blue text-white flex items-center justify-center text-[16px] font-semibold">
               JS
@@ -108,7 +108,7 @@ export default function Settings() {
 
         {/* Keluar */}
         <section>
-          <div className="rounded-2xl border border-divider/60 bg-white overflow-hidden">
+          <div className="rounded-2xl border border-divider/60 bg-card overflow-hidden">
             <button
               onClick={() => setShowLogout(true)}
               className="w-full text-left px-4 py-3 hover:bg-red-50 flex items-center gap-3 transition-colors"
@@ -124,7 +124,7 @@ export default function Settings() {
           </div>
         </section>
 
-        <div className="rounded-2xl border border-divider/60 bg-white p-4">
+        <div className="rounded-2xl border border-divider/60 bg-card p-4">
           <p className="text-[14px] font-semibold text-foreground">G Tech Auditor</p>
           <p className="text-[12px] text-muted-foreground mt-1">Version 1.0.0</p>
           <p className="text-[12px] text-muted-foreground mt-1">© 2026 G Tech Solutions</p>
@@ -136,14 +136,14 @@ export default function Settings() {
         <div className="fixed inset-0 z-50 flex flex-col justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setShowLogout(false)} />
           <div
-            className="relative bg-white rounded-t-3xl flex flex-col"
+            className="relative bg-card rounded-t-3xl flex flex-col"
             style={{ maxHeight: '85svh' }}
           >
-            <div className="w-10 h-1 bg-neutral-300 rounded-full mx-auto mt-4" />
+            <div className="w-10 h-1 bg-muted-foreground/30 rounded-full mx-auto mt-4" />
 
-            <div className="sticky top-0 bg-white px-4 pt-4 pb-3 border-b border-divider/50">
-              <p className="text-[15px] font-semibold text-neutral-900">Keluar dari akun?</p>
-              <p className="text-[12px] text-neutral-500 mt-0.5">
+            <div className="sticky top-0 bg-card px-4 pt-4 pb-3 border-b border-divider/50">
+              <p className="text-[15px] font-semibold text-foreground">Keluar dari akun?</p>
+              <p className="text-[12px] text-muted-foreground mt-0.5">
                 Sesi Anda akan berakhir dan Anda perlu masuk kembali.
               </p>
             </div>
@@ -154,8 +154,8 @@ export default function Settings() {
                   <LogOut className="w-5 h-5 text-danger-red" strokeWidth={1.8} />
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-neutral-900">Konfirmasi keluar</p>
-                  <p className="text-[12px] text-neutral-500 mt-0.5">
+                  <p className="text-[14px] font-semibold text-foreground">Konfirmasi keluar</p>
+                  <p className="text-[12px] text-muted-foreground mt-0.5">
                     Pastikan semua perubahan sudah tersimpan sebelum keluar.
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export default function Settings() {
               </button>
               <button
                 onClick={() => setShowLogout(false)}
-                className="h-12 w-full rounded-2xl bg-neutral-100 text-neutral-700 text-[14px] font-semibold"
+                className="h-12 w-full rounded-2xl bg-secondary text-foreground text-[14px] font-semibold"
               >
                 Batal
               </button>
